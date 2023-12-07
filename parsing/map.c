@@ -64,7 +64,7 @@ static void	fill_input(t_input *input, char **map, int length)
 
 	map_check(length, map);
 	line = length;
-	get_identifier(input, map, &line);
+	find_identifier(input, map, &line);
 }
 
 static void	get_file(int fd, t_input *input, char *name)
