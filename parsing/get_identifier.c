@@ -12,20 +12,9 @@
 
 #include "cub2d.h"
 
-static int pos_num(char *s, int *j)
-{
-	int	i;
-
-	i = 0;
-	while (ft_isdigit(s[i]))
-		i++;
-	*j = *j + i + 1;
-	return (i);
-}
-
 static int	pos_end(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] != ('\t' & ' ' & '\n'))
@@ -45,58 +34,6 @@ static void	start_input(t_input *input)
 	input->ce = 0;
 }
 
-static int	fl_colors(t_input *input, char *map)
-{
-	char	*tmp;
-	int		j;
-
-	j = 2;
-	tmp = ft_substr(map, j, pos_num(&map[2], &j));
-	if (!tmp)
-		return (0);
-	input->fl_color[0] = ft_atoi(tmp);
-	free(tmp);
-	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->fl_color[1] = ft_atoi(tmp);
-	free(tmp);
-	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->fl_color[2] = ft_atoi(tmp);
-	free(tmp);
-	input->fl = 1;
-	return (1);
-}
-
-static int	ce_colors(t_input *input, char *map)
-{
-	char	*tmp;
-	int		j;
-
-	if (input->ce == 1)
-		return (0);
-	j = 2;
-	tmp = ft_substr(map, 2, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->ce_color[0] = ft_atoi(tmp);
-	free(tmp);
-	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->ce_color[1] = ft_atoi(tmp);
-	free(tmp);
-	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->ce_color[2] = ft_atoi(tmp);
-	free(tmp);
-	input->ce = 1;
-	return (1);
-}
-
 static void	get_identifier(t_input *input, char **map, int *i)
 {
 	if (!ft_strncmp("NO ", &map[*i][0], 3) && !input->no_texture)
@@ -114,21 +51,21 @@ static void	get_identifier(t_input *input, char **map, int *i)
 	(*i)++;
 	if (input->exit == 0)
 		return ;
-	if ((!input->no_texture || !input->so_texture || !input->we_texture || !input->ea_texture || !input->fl \
-		|| !input->ce) && map[*i])
+	if ((!input->no_texture || !input->so_texture || !input->we_texture || \
+		!input->ea_texture || !input->fl || !input->ce) && map[*i])
 		get_identifier(input, map, i);
 }
 
 void	find_identifier(t_input *input, char **map, int *line)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
-		while(map[i][j] == ('\t' | '\v' | '\f' | '\r' | ' '))
+		while (map[i][j] == ('\t' | '\v' | '\f' | '\r' | ' '))
 			j++;
 		if (map[i][j] == '\n')
 			i++;
@@ -136,7 +73,7 @@ void	find_identifier(t_input *input, char **map, int *line)
 		{
 			start_input(input);
 			get_identifier(input, map, &i);
-			break;
+			break ;
 		}
 	}
 	if (input->exit == 0 || !map[i])
