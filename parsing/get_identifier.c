@@ -99,17 +99,17 @@ static int	ce_colors(t_input *input, char *map)
 
 static void	get_identifier(t_input *input, char **map, int *i)
 {
-	if (!ft_strncmp("NO ", &map[*i][0], 3))
+	if (!ft_strncmp("NO ", &map[*i][0], 3) && !input->no_texture )
 		input->no_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
-	else if (!ft_strncmp("SO ", &map[*i][0], 3))
+	else if (!ft_strncmp("SO ", &map[*i][0], 3) && !input->so_texture)
 		input->so_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
-	else if (!ft_strncmp("WE ", &map[*i][0], 3))
+	else if (!ft_strncmp("WE ", &map[*i][0], 3) && !input->we_texture)
 		input->we_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
-	else if (!ft_strncmp("EA ", &map[*i][0], 3))
+	else if (!ft_strncmp("EA ", &map[*i][0], 3) && !input->ea_texture)
 		input->ea_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
-	else if (!ft_strncmp("F ", &map[*i][0], 2))
+	else if (!ft_strncmp("F ", &map[*i][0], 2) && !input->fl)
 		input->exit = fl_colors(input, map[*i]);
-	else if (!ft_strncmp("C ", &map[*i][0], 2))
+	else if (!ft_strncmp("C ", &map[*i][0], 2) && !input->ce)
 		input->exit = ce_colors(input, map[*i]);
 	(*i)++;
 	if (input->exit == 0)
