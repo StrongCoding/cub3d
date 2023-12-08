@@ -36,5 +36,6 @@ int				map_check_line(int line, char *map, int length);
 int				map_length(char *name);
 void			find_identifier(t_input *input, char **map, int *line);
 void			free_array(char **array);
+void			free_identifier(t_input *input);
 
 #endif

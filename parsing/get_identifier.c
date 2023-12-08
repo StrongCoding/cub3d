@@ -75,6 +75,8 @@ static int	ce_colors(t_input *input, char *map)
 	char	*tmp;
 	int		j;
 
+	if (input->ce == 1)
+		return (0);
 	j = 2;
 	tmp = ft_substr(map, 2, pos_num(&map[j], &j));
 	if (!tmp)
@@ -106,10 +108,12 @@ static void	get_identifier(t_input *input, char **map, int *i)
 	else if (!ft_strncmp("EA ", &map[*i][0], 3))
 		input->ea_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
 	else if (!ft_strncmp("F ", &map[*i][0], 2))
-		fl_colors(input, map[*i]);
+		input->exit = fl_colors(input, map[*i]);
 	else if (!ft_strncmp("C ", &map[*i][0], 2))
-		ce_colors(input, map[*i]);
+		input->exit = ce_colors(input, map[*i]);
 	(*i)++;
+	if (input->exit == 0)
+		return ;
 	if ((!input->no_texture || !input->so_texture || !input->we_texture || !input->ea_texture || !input->fl \
 		|| !input->ce) && map[*i])
 		get_identifier(input, map, i);
@@ -135,6 +139,8 @@ void	find_identifier(t_input *input, char **map, int *line)
 			break;
 		}
 	}
+	if (input->exit == 0)
+		free_identifier(input);
 	map = NULL;
 	*line = i;
 }
