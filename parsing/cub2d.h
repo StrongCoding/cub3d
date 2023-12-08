@@ -23,7 +23,9 @@ typedef struct s_input
 	char 	*we_texture;
 	char 	*ea_texture;
 	int 	*fl_color;
+	int 	fl;
 	int 	*ce_color;
+	int 	ce;
 	char 	***map;
 	int 	exit;
 }				t_input;
