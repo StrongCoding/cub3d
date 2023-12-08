@@ -19,7 +19,7 @@ static int pos_num(char *s, int *j)
 	i = 0;
 	while (ft_isdigit(s[i]))
 		i++;
-	(*j)++;
+	*j = *j+ i;
 	return (i);
 }
 
@@ -28,7 +28,7 @@ static int	pos_end(char *s)
 	int i;
 
 	i = 0;
-	while (s[i] != ('\t' | ' ' | '\n'))
+	while (s[i] != ('\t' & ' ' & '\n'))
 		i++;
 	return (i);
 }
