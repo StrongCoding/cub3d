@@ -19,7 +19,7 @@ static int pos_num(char *s, int *j)
 	i = 0;
 	while (ft_isdigit(s[i]))
 		i++;
-	*j = *j+ i;
+	*j = *j + i + 1;
 	return (i);
 }
 
@@ -30,7 +30,7 @@ static int	pos_end(char *s)
 	i = 0;
 	while (s[i] != ('\t' & ' ' & '\n'))
 		i++;
-	return (i);
+	return (i - 1);
 }
 
 static void	start_input(t_input *input)
@@ -55,18 +55,19 @@ static void	get_identifier(t_input *input, char **map, int *i, int j)
 		input->ea_texture = ft_substr(&map[*i][j + 3], 0, pos_end(&map[*i][j + 3]));
 	else if (!ft_strncmp("F ", &map[*i][j], 2))
 	{
-		input->fl_color[0] = ft_atoi(ft_substr(&map[*i][j + 3], 0, pos_num(&map[*i][j + 3], &j)));
-		input->fl_color[1] = ft_atoi(ft_substr(&map[*i][j + 3], 0, pos_num(&map[*i][j + 3], &j)));
-		input->fl_color[2] = ft_atoi(ft_substr(&map[*i][j + 3], 0, pos_num(&map[*i][j + 3], &j)));
+		input->fl_color[0] = ft_atoi(ft_substr(&map[*i][j + 2], 0, pos_num(&map[*i][j + 2], &j)));
+		input->fl_color[1] = ft_atoi(ft_substr(&map[*i][j + 2], 0, pos_num(&map[*i][j + 2], &j)));
+		input->fl_color[2] = ft_atoi(ft_substr(&map[*i][j + 2], 0, pos_num(&map[*i][j + 2], &j)));
 	}
 	else if (!ft_strncmp("C ", &map[*i][j], 2))
 	{
-		input->ce_color[0] = ft_atoi(ft_substr(&map[*i][j + 3], 0, pos_num(&map[*i][j + 3], &j)));
-		input->ce_color[1] = ft_atoi(ft_substr(&map[*i][j + 3], 0, pos_num(&map[*i][j + 3], &j)));
-		input->ce_color[2] = ft_atoi(ft_substr(&map[*i][j + 3], 0, pos_num(&map[*i][j + 3], &j)));
+		input->ce_color[0] = ft_atoi(ft_substr(&map[*i][j + 2], 0, pos_num(&map[*i][j + 2], &j)));
+		input->ce_color[1] = ft_atoi(ft_substr(&map[*i][j + 2], 0, pos_num(&map[*i][j + 2], &j)));
+		input->ce_color[2] = ft_atoi(ft_substr(&map[*i][j + 2], 0, pos_num(&map[*i][j + 2], &j)));
 	}
 	(*i)++;
-	if (!input->no_texture || !input->so_texture || !input->we_texture || !input->ea_texture || !input->fl_color || !input->ce_color)
+	if (!input->no_texture || !input->so_texture || !input->we_texture || !input->ea_texture ||
+			ft_strncmp(map[*i], "1", 1))
 		get_identifier(input, map, i , j);
 }
 
