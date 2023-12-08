@@ -58,18 +58,23 @@ static int	map_check(int length, char **map)
 	return (1);
 }
 
-char	**read_map(char *name)
+static void	fill_input(t_input *input, char **map, int length)
 {
-	char	**map;
-	int		line;
-	int		length;
-	int		fd;
+	int line;
 
-	length = map_length(name);
-	fd = open(name, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
+	map_check(length, map);
+	line = length;
+	find_identifier(input, map, &line);
+}
+
+static void	get_file(int fd, t_input *input, char *name)
+{
+	int		line;
+	int 	length;
+	char	**map;
+
 	line = 0;
+	length = map_length(name);
 	map = ft_calloc(length + 1, sizeof(char **));
 	while (line < length)
 	{
@@ -77,11 +82,18 @@ char	**read_map(char *name)
 		line++;
 	}
 	close(fd);
-	if (line > 22 || ft_strlen(map[line - 1]) > 41 || \
-		!map_check(line, map))
-	{
-		ft_printf("Error\nInvalid Map");
-		return (free_array(map), NULL);
-	}
-	return (map);
+	fill_input(input, map, length);
+}
+
+t_input	read_map(char *name)
+{
+	t_input	input;
+	int		fd;
+
+	input.exit = 1;
+	fd = open(name, O_RDONLY);
+	if (fd < 0)
+		input.exit = 0;
+	get_file(fd, &input, name);
+	return (input);
 }

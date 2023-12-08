@@ -1,0 +1,76 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_colors.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/08 16:27:28 by nschutz           #+#    #+#             */
+/*   Updated: 2023/12/08 16:27:28 by nschutz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub2d.h"
+
+static int	pos_num(char *s, int *j)
+{
+	int	i;
+
+	i = 0;
+	while (ft_isdigit(s[i]))
+		i++;
+	*j = *j + i + 1;
+	return (i);
+}
+
+int	ce_colors(t_input *input, char *map)
+{
+	char	*tmp;
+	int		j;
+
+	if (input->ce == 1)
+		return (0);
+	j = 2;
+	tmp = ft_substr(map, 2, pos_num(&map[j], &j));
+	if (!tmp)
+		return (0);
+	input->ce_color[0] = ft_atoi(tmp);
+	free(tmp);
+	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
+	if (!tmp)
+		return (0);
+	input->ce_color[1] = ft_atoi(tmp);
+	free(tmp);
+	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
+	if (!tmp)
+		return (0);
+	input->ce_color[2] = ft_atoi(tmp);
+	free(tmp);
+	input->ce = 1;
+	return (1);
+}
+
+int	fl_colors(t_input *input, char *map)
+{
+	char	*tmp;
+	int		j;
+
+	j = 2;
+	tmp = ft_substr(map, j, pos_num(&map[2], &j));
+	if (!tmp)
+		return (0);
+	input->fl_color[0] = ft_atoi(tmp);
+	free(tmp);
+	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
+	if (!tmp)
+		return (0);
+	input->fl_color[1] = ft_atoi(tmp);
+	free(tmp);
+	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
+	if (!tmp)
+		return (0);
+	input->fl_color[2] = ft_atoi(tmp);
+	free(tmp);
+	input->fl = 1;
+	return (1);
+}

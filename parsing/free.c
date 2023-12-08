@@ -24,3 +24,19 @@ void	free_array(char **array)
 	}
 	free(array);
 }
+
+void	free_identifier(t_input *input)
+{
+	if (input->no_texture)
+		free(input->no_texture);
+	else if (input->so_texture)
+		free(input->so_texture);
+	else if (input->we_texture)
+		free(input->we_texture);
+	else if (input->ea_texture)
+		free(input->ea_texture);
+	else if (input->fl_color)
+		free(input->fl_color);
+	else if (input->ce_color)
+		free(input->ce_color);
+}
