@@ -99,7 +99,7 @@ static int	ce_colors(t_input *input, char *map)
 
 static void	get_identifier(t_input *input, char **map, int *i)
 {
-	if (!ft_strncmp("NO ", &map[*i][0], 3) && !input->no_texture )
+	if (!ft_strncmp("NO ", &map[*i][0], 3) && !input->no_texture)
 		input->no_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
 	else if (!ft_strncmp("SO ", &map[*i][0], 3) && !input->so_texture)
 		input->so_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
@@ -139,8 +139,7 @@ void	find_identifier(t_input *input, char **map, int *line)
 			break;
 		}
 	}
-	if (input->exit == 0)
+	if (input->exit == 0 || !map[i])
 		free_identifier(input);
-	map = NULL;
 	*line = i;
 }
