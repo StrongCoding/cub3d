@@ -142,4 +142,6 @@ void	find_identifier(t_input *input, char **map, int *line)
 	if (input->exit == 0 || !map[i])
 		free_identifier(input);
 	*line = i;
+	while (!ft_strncmp(map[*line], "\n", 1))
+		(*line)++;
 }
