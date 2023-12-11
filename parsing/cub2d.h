@@ -17,14 +17,21 @@
 # include <stdlib.h>
 
 
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}				t_color;
+
 typedef	struct s_map
 {
 	void	*no_text;
 	void 	*so_tex;
 	void 	*we_tex;
 	void 	*ea_tex;
-	int		*fl_color;
-	int 	*ce_color;
+	t_color	fl_color;
+	t_color	ce_color;
 	char 	***map;
 	int 	start_row;
 	int 	start_col;
@@ -43,6 +50,8 @@ typedef struct s_input
 	int 	*ce_color;
 	int 	ce;
 	char 	***map;
+	int 	rows;
+	int 	cols;
 	int 	exit;
 }				t_input;
 
@@ -53,6 +62,7 @@ int				map_length(char *name);
 void			find_identifier(t_input *input, char **map, int *line);
 int				fl_colors(t_input *input, char *map);
 int				ce_colors(t_input *input, char *map);
+char			***get_map(t_input *input, char **file, int line);
 void			free_array(char **array);
 void			free_identifier(t_input *input);
 

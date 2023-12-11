@@ -32,6 +32,8 @@ static void	start_input(t_input *input)
 	input->fl = 0;
 	input->ce_color = ft_calloc(sizeof(int), 3);
 	input->ce = 0;
+	input->rows = 0;
+	input->cols = 0;
 }
 
 static void	get_identifier(t_input *input, char **map, int *i)

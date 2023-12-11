@@ -60,11 +60,9 @@ static int	map_check(int length, char **map)
 
 static void	fill_input(t_input *input, char **map, int length)
 {
-	int line;
-
+	find_identifier(input, map, &length);
+	input->map = get_map(input, map, length);
 	map_check(length, map);
-	line = length;
-	find_identifier(input, map, &line);
 }
 
 static void	get_file(int fd, t_input *input, char *name)
