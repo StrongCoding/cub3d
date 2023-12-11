@@ -52,7 +52,7 @@ char	**fill_map(t_input *input, char **file, int line)
 	while (file[line])
 	{
 		col = 0;
-		while (file[line][col] != '\n')
+		while (file[line][col] != '\n' && file[line][col] != '\0')
 		{
 			map[row][col] = file[line][col];
 			col++;
@@ -62,6 +62,8 @@ char	**fill_map(t_input *input, char **file, int line)
 			map[row][col] = ' ';
 			col++;
 		}
+		line++;
+		row++;
 	}
 	return (map);
 }
@@ -69,14 +71,14 @@ char	**fill_map(t_input *input, char **file, int line)
 char	**get_map(t_input *input, char **file, int line)
 {
 	int	i;
+	int start;
 
+	start = line;
 	while (file[line])
 	{
 		i = 0;
 		while(file[line][i] != '\n' && file[line][i] != '\0')
-		{
 			i++;
-		}
 		if (i > input->cols)
 			input->cols = i;
 		line++;
@@ -84,5 +86,5 @@ char	**get_map(t_input *input, char **file, int line)
 	}
 	if (input->exit == 0)
 		return (NULL);;
-	return (fill_map)(input, file, line);
+	return (fill_map)(input, file, start);
 }
