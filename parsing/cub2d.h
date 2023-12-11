@@ -41,7 +41,7 @@ typedef	struct s_map
 	void 	*ea_tex;
 	t_color	fl_color;
 	t_color	ce_color;
-	char 	***map;
+	char 	**map;
 	t_start	info;
 }				t_map;
 

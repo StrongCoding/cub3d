@@ -26,7 +26,7 @@ int convert_struct(t_input *input)
 	map.ce_color.r = input->ce_color[0];
 	map.ce_color.g = input->ce_color[1];
 	map.ce_color.b = input->ce_color[2];
-	map.map = &input->map;
+	map.map = input->map;
 	map.info = input->info;
 	return (1);
 }
