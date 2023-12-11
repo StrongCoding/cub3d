@@ -16,6 +16,22 @@
 # include "../ft_printf/ft_printf.h"
 # include <stdlib.h>
 
+
+typedef	struct s_map
+{
+	void	*no_text;
+	void 	*so_tex;
+	void 	*we_tex;
+	void 	*ea_tex;
+	int		*fl_color;
+	int 	*ce_color;
+	char 	***map;
+	int 	start_row;
+	int 	start_col;
+	char	start_dir;
+}				t_map;
+
+
 typedef struct s_input
 {
 	char	*no_texture;
