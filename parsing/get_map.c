@@ -21,7 +21,7 @@ static char	**alloc_map(t_input *input)
 	map = ft_calloc(input->info.count_rows + 1, sizeof(char *));
 	if (!map)
 		return (NULL);
-	while (i <= input->info.count_rows)
+	while (i < input->info.count_rows)
 	{
 		map[i] = ft_calloc(input->info.count_cols + 1, sizeof(char));
 		if (!map[i])
