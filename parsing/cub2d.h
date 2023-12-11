@@ -57,6 +57,7 @@ typedef struct s_input
 	int 	*ce_color;
 	int 	ce;
 	char 	**map;
+	t_start	info;
 	int 	rows;
 	int 	cols;
 	int 	exit;

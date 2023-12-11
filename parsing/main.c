@@ -32,5 +32,6 @@ int	main(int argc, char **argv)
 	input = read_map(argv[1]);
 	if (!input.exit)
 		return (ft_printf("Error\nInvalid map"));
+	convert_struct(input);
 	return (ft_printf("\nValid map") - argc);
 }
