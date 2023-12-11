@@ -12,7 +12,7 @@
 
 #include "cub2d.h"
 
-static int	valid_char(char c)
+int	valid_char(char c)
 {
 	if (c == '1' || c == '0')
 		return (1);
@@ -40,7 +40,10 @@ int	check_map(char **file, int row, int col, int *s_bool)
 	if (*s_bool == 1 && valid_char(file[row][col]) == 2)
 		return (0);
 	else if (valid_char(file[row][col]) == 2)
+	{
+		file[row][col] = '0';
 		*s_bool = 1;
+	}
 	if (file[row][col] == '0')
 	{
 		if (!check_zero(file, row, col))

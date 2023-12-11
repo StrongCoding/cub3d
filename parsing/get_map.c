@@ -18,12 +18,12 @@ static char	**alloc_map(t_input *input)
 	char	**map;
 
 	i = 0;
-	map = ft_calloc(input->rows + 1, sizeof(char *));
+	map = ft_calloc(input->info.count_rows + 1, sizeof(char *));
 	if (!map)
 		return (NULL);
-	while (i <= input->rows)
+	while (i <= input->info.count_rows)
 	{
-		map[i] = ft_calloc(input->cols + 1, sizeof(char));
+		map[i] = ft_calloc(input->info.count_cols + 1, sizeof(char));
 		if (!map[i])
 		{
 			while (i > 0)
@@ -54,10 +54,16 @@ char	**fill_map(t_input *input, char **file, int line)
 		col = 0;
 		while (file[line][col] != '\n' && file[line][col] != '\0')
 		{
+			if (valid_char(file[line][col]) == 2)
+			{
+				input->info.start_dir = file[line][col];
+				input->info.start_row = row;
+				input->info.start_col = col;
+			}
 			map[row][col] = file[line][col];
 			col++;
 		}
-		while (col < input->cols)
+		while (col < input->info.count_cols)
 		{
 			map[row][col] = ' ';
 			col++;
@@ -79,10 +85,10 @@ char	**get_map(t_input *input, char **file, int line)
 		i = 0;
 		while(file[line][i] != '\n' && file[line][i] != '\0')
 			i++;
-		if (i > input->cols)
-			input->cols = i;
+		if (i > input->info.count_cols)
+			input->info.count_cols = i;
 		line++;
-		(input->rows)++;
+		(input->info.count_rows)++;
 	}
 	if (input->exit == 0)
 		return (NULL);;

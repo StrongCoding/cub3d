@@ -6,7 +6,7 @@ CC := cc
 #CFLAGS :=  -fsanitize=address -g
 CFLAGS := -Wall -Wextra -Werror -g3
 # find / -name libreadline.aCFLAGS := $(CFLAGS) -fsanitize=address
-SRC :=	main.c map.c map_lengths.c map_tools.c get_identifier.c get_colors.c get_map.c map_check.c free.c
+SRC :=	main.c map.c map_lengths.c map_tools.c get_identifier.c get_colors.c get_map.c map_check.c convert_struct.c free.c
 
 #INCLUDES := -I inc -I tools/ft_printf -I $(HOME)/goinfre/.brew/opt/readline/include/readline/ -L $(HOME)/goinfre/.brew/opt/readline/lib/
 #INCLUDES := -I inc -I tools/ft_printf -I readline/include/readline -L readline/lib
