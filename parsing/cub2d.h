@@ -16,6 +16,15 @@
 # include "../ft_printf/ft_printf.h"
 # include <stdlib.h>
 
+typedef struct s_start
+{
+	int		count_rows;
+	int 	count_cols;
+	char	start_dir;
+	int 	start_row;
+	int 	start_col;
+}				t_start;
+
 
 typedef struct s_color
 {
@@ -33,9 +42,7 @@ typedef	struct s_map
 	t_color	fl_color;
 	t_color	ce_color;
 	char 	***map;
-	int 	start_row;
-	int 	start_col;
-	char	start_dir;
+	t_start	info;
 }				t_map;
 
 
@@ -49,7 +56,7 @@ typedef struct s_input
 	int 	fl;
 	int 	*ce_color;
 	int 	ce;
-	char 	***map;
+	char 	**map;
 	int 	rows;
 	int 	cols;
 	int 	exit;
@@ -57,12 +64,12 @@ typedef struct s_input
 
 t_input 		read_map(char *name);
 int				main(int argc, char **argv);
-int				map_check_line(int line, char *map, int length);
 int				map_length(char *name);
 void			find_identifier(t_input *input, char **map, int *line);
 int				fl_colors(t_input *input, char *map);
 int				ce_colors(t_input *input, char *map);
-char			***get_map(t_input *input, char **file, int line);
+char			**get_map(t_input *input, char **file, int line);
+int				check_map(char **file, int row, int col, int *s_bool);
 void			free_array(char **array);
 void			free_identifier(t_input *input);
 

@@ -67,7 +67,8 @@ void	find_identifier(t_input *input, char **map, int *line)
 	while (map[i])
 	{
 		j = 0;
-		while (map[i][j] == ('\t' | '\v' | '\f' | '\r' | ' '))
+		while (map[i][j] == '\t' ||  map[i][j] == '\v' || map[i][j] == '\f' || \
+				map[i][j] == '\r' || map[i][j] == ' ')
 			j++;
 		if (map[i][j] == '\n')
 			i++;

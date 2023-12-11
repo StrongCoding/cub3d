@@ -25,8 +25,12 @@ static int	ending_cub(char *name)
 
 int	main(int argc, char **argv)
 {
+	t_input	input;
+
 	if (!ending_cub(argv[1]))
+		return (ft_printf("Error\nInvalid name of map"));
+	input = read_map(argv[1]);
+	if (!input.exit)
 		return (ft_printf("Error\nInvalid map"));
-	read_map(argv[1]);
-	return (argc);
+	return (ft_printf("\nValid map") - argc);
 }
