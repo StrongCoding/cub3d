@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	input = read_map(argv[1]);
 	if (!input.exit)
 		return (ft_printf("Error\nInvalid map"));
-	convert_struct(&input);
+	if (!convert_struct(&input))
+		return (free_array(input.map), ft_printf("Error\nInvalid textures"));
 	return (ft_printf("\nValid map") - argc);
 }
