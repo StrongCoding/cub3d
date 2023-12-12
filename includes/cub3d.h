@@ -15,6 +15,7 @@
 
 # include "../minilibx-linux/mlx.h"
 # include "../ft_printf/ft_printf.h"
+# include "../parsing/cub2d.h"
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
