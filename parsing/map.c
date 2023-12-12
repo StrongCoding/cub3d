@@ -35,14 +35,17 @@ static void	fill_input(t_input *input, char **map, int length)
 		while(input->map[j][i] != '\0')
 		{
 			if (!check_map(input->map, j, i, &s_bool))
-			{
 				input->exit = 0;
-				return (free_identifier(input), free_array(map));
-			}
 			i++;
 		}
 		j++;
 	}
+	if (s_bool == 0 || !input->exit)
+	{
+		input->exit = 0;
+		return (free_identifier(input), free_array(map));
+	}
+
 }
 
 static void	get_file(int fd, t_input *input, char *name)
