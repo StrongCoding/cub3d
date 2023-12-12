@@ -8,14 +8,6 @@ FILES 		=	main \
 				init \
 				sprite \
 				render \
-				../parsing/map \
-				../parsing/map_lengths \
-				../parsing/get_identifier \
-				../parsing/get_colors \
-				../parsing/get_map \
-				../parsing/map_check \
-				../parsing/convert_struct \
-				../parsing/free
 
 SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
 OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
