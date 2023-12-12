@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/06 09:42:33 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/11 19:19:35 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <math.h>
 
 # define WALL		49
 # define GROUND		48
@@ -41,14 +42,16 @@
 # define KEY_Q		113
 # define KEY_ESC	65307
 
-typedef struct s_sprite {
+typedef struct s_sprite
+{
 	void	*img;
 	int		width;
 	int		height;
 	char	*relative_path;
 }				t_sprite;
 
-typedef struct	s_image {
+typedef struct s_image
+{
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -56,15 +59,47 @@ typedef struct	s_image {
 	int		endian;
 }				t_image;
 
-typedef struct s_game {	
+typedef struct s_raycasting
+{
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	camera_x;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	perp_wall_dist;
+	int		side;
+	int		step_x;
+	int		step_y;
+	int		map_x;
+	int		map_y;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+
+}				t_raycasting;
+
+typedef struct s_game
+{
 	void		*mlx;
 	void		*win;
+	t_image		*img1;
+	t_image		*img2;
 	int			win_height;
 	int			win_width;
 	int			x;
 	int			y;
 	int			exit_x;
 	int			exit_y;
+	int			ceiling_color;
+	int			floor_color;
 	t_sprite	*wall;
 	char		**map;
 	char		**map_copy;
@@ -72,6 +107,7 @@ typedef struct s_game {
 	int			movements;
 	int			frame;
 	int			end;
+	t_raycasting	*ray;
 }				t_game;
 
 int			key_hook(int keycode, t_game *game);
@@ -84,11 +120,16 @@ int			ft_move_up(t_game *game);
 int			ft_move_down(t_game *game);
 t_sprite	*ft_newsprite(char *content);
 void		init_win(t_game *game);
-void		test_wall(t_game *game);
-void		get_closer(t_game *game);
-void		test_image2(t_game *game, t_image *img);
-void		test_image1(t_game *game, t_image *img);
 void		put_square(t_image *img);
 int			get_trgb(int t, int r, int g, int b);
+void		bresenham(t_image *img, int x_start, int y_start, int x_dest, int y_dest);
+void		my_mlx_pixel_put(t_image *img, int x, int y, int color);
+void		draw_vertical_line(int x, int y_start, int y_end, int color, t_image *img);
+void		dda(t_game *game);
+int			render(t_game *game);
+void		draw_ground_ceiling(t_image *img, t_game *game);
+void		init_image(t_game *game, t_image *img);
+void		calc_distance_and_height(t_game *game);
+void		calc_stripe(t_game *game);
 
 #endif

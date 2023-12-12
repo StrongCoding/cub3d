@@ -7,12 +7,16 @@ FILES 		=	main \
 				hooks \
 				init \
 				sprite \
-				render
+				render \
+				map \
+				bresenham \
+				dda \
+				painting
 
 SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
 OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
 
-NAME		=	cub3d
+NAME		=	cub3D
 #FLAGS		=	-Wall -Werror -Wextra -g
 FLAGS		= 	-g -fsanitize=address
 #FLAGS		= 	-g -fsanitize=memory
