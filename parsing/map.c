@@ -45,13 +45,16 @@ static void	get_file(int fd, t_input *input, char *name)
 
 	line = 0;
 	length = map_length(name);
-	map = ft_calloc(length + 1, sizeof(char **));
+	map = ft_calloc(length + 1, sizeof(char *));
+	if (!map)
+		return ;
 	while (line < length)
 	{
 		map[line] = get_next_line(fd);
+		if (!map[line])
+			return (free_array(map));
 		line++;
 	}
-	close(fd);
 	fill_input(input, map, length);
 	if (!input->exit)
 		return ;
@@ -65,7 +68,11 @@ t_input	read_map(char *name)
 	input.exit = 1;
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
+	{
 		input.exit = 0;
+		return (input);
+	}
 	get_file(fd, &input, name);
+	close(fd);
 	return (input);
 }
