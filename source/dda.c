@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:40:09 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 12:41:16 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/12 20:12:03 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,49 +44,26 @@ void	dda(t_game *game)
 	hit = 0;
 	while (hit == 0)
 	{
-		// if (game->ray->side_dist_x < 0)
-		// {
-		// 	if (game->ray->side_dist_x < game->ray->side_dist_y)
-		// 	{
-		// 		game->ray->side_dist_x += game->ray->delta_dist_x;
-		// 		game->ray->map_x += game->ray->step_x;
-		// 		game->ray->side = 0;
-		// 	}
-		// 	else
-		// 	{
-		// 		game->ray->side_dist_y += game->ray->delta_dist_y;
-		// 		game->ray->map_y += game->ray->step_y;
-		// 		game->ray->side = 1;
-		// 	}
-		// }
-		// else
-		// {
-		// 	if (game->ray->side_dist_x < game->ray->side_dist_y)
-		// 	{
-		// 		game->ray->side_dist_x += game->ray->delta_dist_x;
-		// 		game->ray->map_x += game->ray->step_x;
-		// 		game->ray->side = 2;
-		// 	}
-		// 	else
-		// 	{
-		// 		game->ray->side_dist_y += game->ray->delta_dist_y;
-		// 		game->ray->map_y += game->ray->step_y;
-		// 		game->ray->side = 3;
-		// 	}
-		// }
-			if (game->ray->side_dist_x < game->ray->side_dist_y)
-			{
-				game->ray->side_dist_x += game->ray->delta_dist_x;
-				game->ray->map_x += game->ray->step_x;
-				game->ray->side = 0;
-			}
+		if (game->ray->side_dist_x < game->ray->side_dist_y)
+		{
+			game->ray->side_dist_x += game->ray->delta_dist_x;
+			game->ray->map_x += game->ray->step_x;
+			game->ray->side = 0;
+			if (game->ray->ray_dir_x < 0)
+				game->ray->direction = 2;
 			else
-			{
-				game->ray->side_dist_y += game->ray->delta_dist_y;
-				game->ray->map_y += game->ray->step_y;
-				game->ray->side = 1;
-			}
-
+				game->ray->direction = 3;
+		}
+		else
+		{
+			game->ray->side_dist_y += game->ray->delta_dist_y;
+			game->ray->map_y += game->ray->step_y;
+			game->ray->side = 1;
+			if (game->ray->ray_dir_y < 0)
+				game->ray->direction = 0;
+			else
+				game->ray->direction = 1;
+		}
 		if (game->map[game->ray->map_x][game->ray->map_y] > '0')
 			hit = 1;
 	}

@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 19:42:51 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 12:41:54 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/12 20:12:28 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ int	render(t_game *game)
 
 	first = 1;
 	// printf("starting loop\n");
-	if (first)
+	// if (first)
 		draw_ground_ceiling(game->img1, game);
-	else
-		draw_ground_ceiling(game->img2, game);
+	// else
+	// 	draw_ground_ceiling(game->img2, game);
 
 		x = 0;
 		while (x < game->win_width)
@@ -92,30 +92,38 @@ int	render(t_game *game)
 			calc_stripe(game);
 			int color = 0xFF8000;
 			//give x and y sides different brightness
-			if (game->ray->side == 1)
-				color = color / 2;
-			// if(game->ray->side == 2)
+			// if (game->ray->side == 1)
+			// 	color = color / 2;
+			// if (game->ray->side == 2)
 			// 	color = get_trgb(0, 255, 0, 0);
-			// if(game->ray->side == 3)
+			// if (game->ray->side == 3)
 			// 	color = get_trgb(0, 255, 0, 255);
-			if (first)
+			if (game->ray->direction == 1)
+				color = color / 2;
+			if (game->ray->direction == 2)
+				color = get_trgb(0, 255, 0, 0);
+			if (game->ray->direction == 3)
+				color = get_trgb(0, 255, 0, 255);
+			// if (first)
 				draw_vertical_line(x, game->ray->draw_start, game->ray->draw_end, color, game->img1);
-			else
-				draw_vertical_line(x, game->ray->draw_start, game->ray->draw_end, color, game->img2);
+			// else
+			// 	draw_vertical_line(x, game->ray->draw_start, game->ray->draw_end, color, game->img2);
 			x++;
+
+		printf("side: %d dir_y: %f dir_x: %f\n", game->ray->side, game->ray->dir_y, game->ray->dir_x);	
 		}
-		if (first)
-		{
-			first = 0;
+		// if (first)
+		// {
+		// 	first = 0;
 			mlx_put_image_to_window(game->mlx, game->win,
 				game->img1->img, 0, 0);
-		}
-		else
-		{
-			first = 1;
-			mlx_put_image_to_window(game->mlx, game->win,
-				game->img2->img, 0, 0);
-		}
+		// }
+		// else
+		// {
+		// 	first = 1;
+		// 	mlx_put_image_to_window(game->mlx, game->win,
+		// 		game->img2->img, 0, 0);
+		// }
 	// printf("loop\n");
 	usleep(1000);
 	return (0);

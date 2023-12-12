@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/11 19:19:35 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/12 20:12:13 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_raycasting
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		direction;
 
 }				t_raycasting;
 
