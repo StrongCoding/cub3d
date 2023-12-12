@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 	// test_image1(&game, &image1);
 	game.img1 = &image1;
 	game.img2 = &image2;
-	game.ray->pos_x = info.start_pos.start_row;
-	game.ray->pos_y = info.start_pos.start_col;
+	game.ray->pos_x = info.start_pos.start_row + 0.5;
+	game.ray->pos_y = info.start_pos.start_col + 0.5;
 	game.ray->dir_x = -1;
 	game.ray->plane_y = 0.66;
 	printf("game loop starting\n");
