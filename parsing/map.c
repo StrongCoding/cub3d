@@ -12,59 +12,40 @@
 
 #include "cub2d.h"
 
-static int	ep_check(char **map, int length)
-{
-	int	p;
-	int	e;
-	int	line;
-
-	p = 0;
-	e = 0;
-	line = 0;
-	while (line < length && map)
-	{
-		//p = p + is_ep_true(map[line], 'P');
-		//e = e + is_ep_true(map[line], 'E');
-		line++;
-	}
-	if (e != 1 || p != 1)
-		return (0);
-	return (1);
-}
-
-static int	map_check(int length, char **map)
-{
-	char	**map_path;
-	int		line;
-
-	line = 0;
-	while (line < length)
-	{
-		if (!map_check_line(line, map[line], length))
-			return (0);
-		line++;
-	}
-	if (!ep_check(map, length))
-		//return (0);
-	map_path = ft_calloc(length + 1, sizeof(char **));
-	line = 0;
-	while (line < length)
-	{
-		map_path[line] = ft_strdup(map[line]);
-		line++;
-	}
-	//if (map_check_path(map_path) == 0)
-		//return (0);
-	return (1);
-}
-
 static void	fill_input(t_input *input, char **map, int length)
 {
-	int line;
+	int	i;
+	int j;
+	int s_bool;
 
-	map_check(length, map);
-	line = length;
-	find_identifier(input, map, &line);
+	j = 0;
+	s_bool = 0;
+	find_identifier(input, map, &length);
+	if (input->exit == 0)
+		return ;
+	input->map = get_map(input, map, length);
+	if (!input->map)
+	{
+		input->exit = 0;
+		return (free_identifier(input));
+	}
+	while (input->map[j])
+	{
+		i = 0;
+		while(input->map[j][i] != '\0')
+		{
+			if (!check_map(input->map, j, i, &s_bool))
+				input->exit = 0;
+			i++;
+		}
+		j++;
+	}
+	if (s_bool == 0 || !input->exit)
+	{
+		input->exit = 0;
+		return (free_identifier(input), free_array(map));
+	}
+
 }
 
 static void	get_file(int fd, t_input *input, char *name)
@@ -75,14 +56,19 @@ static void	get_file(int fd, t_input *input, char *name)
 
 	line = 0;
 	length = map_length(name);
-	map = ft_calloc(length + 1, sizeof(char **));
+	map = ft_calloc(length + 1, sizeof(char *));
+	if (!map)
+		return ;
 	while (line < length)
 	{
 		map[line] = get_next_line(fd);
+		if (!map[line])
+			return (free_array(map));
 		line++;
 	}
-	close(fd);
 	fill_input(input, map, length);
+	if (!input->exit)
+		return ;
 }
 
 t_input	read_map(char *name)
@@ -93,7 +79,11 @@ t_input	read_map(char *name)
 	input.exit = 1;
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
+	{
 		input.exit = 0;
+		return (input);
+	}
 	get_file(fd, &input, name);
+	close(fd);
 	return (input);
 }
