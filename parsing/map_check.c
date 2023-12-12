@@ -12,6 +12,17 @@
 
 #include "cub2d.h"
 
+int	ending_cub(char *name)
+{
+	size_t	len;
+
+	len = ft_strlen(name) - 1;
+	if (name[len] != 'b' || name[len - 1] != 'u' || \
+		name[len - 2] != 'c' || name[len - 3] != '.')
+		return (0);
+	return (1);
+}
+
 int	valid_char(char c)
 {
 	if (c == '1' || c == '0')

@@ -62,7 +62,7 @@ typedef struct s_input
 }				t_input;
 
 t_input 		read_map(char *name);
-int				main(int argc, char **argv);
+int				ending_cub(char *name);
 int				map_length(char *name);
 void			find_identifier(t_input *input, char **map, int *line);
 int				fl_colors(t_input *input, char *map);
