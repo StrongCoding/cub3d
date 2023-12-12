@@ -42,7 +42,7 @@ typedef	struct s_map
 	t_color	fl_color;
 	t_color	ce_color;
 	char 	**map;
-	t_start	info;
+	t_start	start_pos;
 }				t_map;
 
 

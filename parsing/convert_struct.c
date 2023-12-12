@@ -50,6 +50,6 @@ int convert_struct(t_input *input, t_map *map)
 	map->ce_color.b = input->ce_color[2];
 	free(input->ce_color);
 	map->map = input->map;
-	map->info = input->info;
+	map->start_pos = input->info;
 	return (1);
 }
