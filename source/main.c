@@ -19,7 +19,16 @@ int	main(int argc, char **argv)
 	t_image			image2;
 	t_raycasting	ray;
 	char			**map;
+	t_input			input;
+	t_map			test;
 
+	if (!ending_cub(argv[1]))
+		return (ft_printf("Error\nInvalid name of map"));
+	input = read_map(argv[1]);
+	if (!input.exit)
+		return (ft_printf("Error\nInvalid map"));
+	if (!convert_struct(&input, &test))
+		return (free_array(input.map), ft_printf("Error\nInvalid textures"));
 	map = malloc(sizeof(char *) * 24);
 	map[0] = ft_strdup("111111111111111111111111");
 	map[1] = ft_strdup("100000000000000000000001");

@@ -37,25 +37,19 @@ static int	get_textures(t_map *map, t_input *input)
 	return (1);
 }
 
-int convert_struct(t_input *input)
+int convert_struct(t_input *input, t_map *map)
 {
-	t_map	map;
-
-	if (!get_textures(&map, input))
+	if (!get_textures(map, input))
 		return (0);
-	/*map.no_text;
-	map.so_tex;
-	map.we_tex; get_mlx_pointer;
-	map.ea_tex; */
-	map.fl_color.r = input->fl_color[0];
-	map.fl_color.g = input->fl_color[1];
-	map.fl_color.b = input->fl_color[2];
+	map->fl_color.r = input->fl_color[0];
+	map->fl_color.g = input->fl_color[1];
+	map->fl_color.b = input->fl_color[2];
 	free(input->fl_color);
-	map.ce_color.r = input->ce_color[0];
-	map.ce_color.g = input->ce_color[1];
-	map.ce_color.b = input->ce_color[2];
+	map->ce_color.r = input->ce_color[0];
+	map->ce_color.g = input->ce_color[1];
+	map->ce_color.b = input->ce_color[2];
 	free(input->ce_color);
-	map.map = input->map;
-	map.info = input->info;
+	map->map = input->map;
+	map->info = input->info;
 	return (1);
 }

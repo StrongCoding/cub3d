@@ -26,13 +26,14 @@ static int	ending_cub(char *name)
 int	main(int argc, char **argv)
 {
 	t_input	input;
+	t_map	map;
 
 	if (!ending_cub(argv[1]))
 		return (ft_printf("Error\nInvalid name of map"));
 	input = read_map(argv[1]);
 	if (!input.exit)
 		return (ft_printf("Error\nInvalid map"));
-	if (!convert_struct(&input))
+	if (!convert_struct(&input, &map))
 		return (free_array(input.map), ft_printf("Error\nInvalid textures"));
 	return (ft_printf("\nValid map") - argc);
 }
