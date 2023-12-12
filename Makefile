@@ -8,7 +8,6 @@ FILES 		=	main \
 				init \
 				sprite \
 				render \
-				map \
 				bresenham \
 				dda \
 				painting
