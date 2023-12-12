@@ -21,16 +21,24 @@ static void	fill_input(t_input *input, char **map, int length)
 	j = 0;
 	s_bool = 0;
 	find_identifier(input, map, &length);
+	if (input->exit == 0)
+		return ;
 	input->map = get_map(input, map, length);
 	if (!input->map)
-		return ;
+	{
+		input->exit = 0;
+		return (free_identifier(input));
+	}
 	while (input->map[j])
 	{
 		i = 0;
 		while(input->map[j][i] != '\0')
 		{
 			if (!check_map(input->map, j, i, &s_bool))
+			{
 				input->exit = 0;
+				return (free_identifier(input), free_array(map));
+			}
 			i++;
 		}
 		j++;

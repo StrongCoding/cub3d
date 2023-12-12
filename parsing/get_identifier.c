@@ -39,17 +39,35 @@ static void	start_input(t_input *input)
 static void	get_identifier(t_input *input, char **map, int *i)
 {
 	if (!ft_strncmp("NO ", &map[*i][0], 3) && !input->no_texture)
+	{
 		input->no_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
+		if (!input->no_texture)
+			input->exit = 0;
+	}
 	else if (!ft_strncmp("SO ", &map[*i][0], 3) && !input->so_texture)
+	{
 		input->so_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
+		if (!input->so_texture)
+			input->exit = 0;
+	}
 	else if (!ft_strncmp("WE ", &map[*i][0], 3) && !input->we_texture)
+	{
 		input->we_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
+		if (!input->we_texture)
+			input->exit = 0;
+	}
 	else if (!ft_strncmp("EA ", &map[*i][0], 3) && !input->ea_texture)
+	{
 		input->ea_texture = ft_substr(&map[*i][3], 0, pos_end(&map[*i][3]));
+		if (!input->ea_texture)
+			input->exit = 0;
+	}
 	else if (!ft_strncmp("F ", &map[*i][0], 2) && !input->fl)
 		input->exit = fl_colors(input, map[*i]);
 	else if (!ft_strncmp("C ", &map[*i][0], 2) && !input->ce)
 		input->exit = ce_colors(input, map[*i]);
+	else
+		input->exit = 0;
 	(*i)++;
 	if (input->exit == 0)
 		return ;
@@ -79,9 +97,9 @@ void	find_identifier(t_input *input, char **map, int *line)
 			break ;
 		}
 	}
-	if (input->exit == 0 || !map[i])
-		free_identifier(input);
 	*line = i;
-	while (!ft_strncmp(map[*line], "\n", 1))
+	while (map[*line] && !ft_strncmp(map[*line], "\n", 1))
 		(*line)++;
+	if (input->exit == 0 || !map[*line])
+		free_identifier(input);
 }

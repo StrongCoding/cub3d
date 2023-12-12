@@ -33,6 +33,7 @@ static int	get_textures(t_map *map, t_input *input)
 	if (!fd)
 		return (free_identifier(input), 0);
 	close (fd);
+	map = NULL;
 	return (1);
 }
 
