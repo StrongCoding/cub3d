@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 12:16:00 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:42:15 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\nInvalid map"));
 	init_struct(&game);
 	ft_bzero(&ray, sizeof(t_raycasting));
-	game.map = info.map;
 	game.ceiling_color = get_trgb(0, info.ce_color.r, info.ce_color.g, info.ce_color.b);
 	game.floor_color = get_trgb(0, info.fl_color.r, info.fl_color.g, info.fl_color.b);
 	game.ray = &ray;
@@ -42,6 +41,7 @@ int	main(int argc, char **argv)
 	usleep(1000000);
 	game.img1 = &image1;
 	game.img2 = &image2;
+	game.map = info.map;
 	game.ray->pos_x = info.start_pos.start_row + 0.5;
 	game.ray->pos_y = info.start_pos.start_col + 0.5;
 	game.ray->dir_x = -1;
