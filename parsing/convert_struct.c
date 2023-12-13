@@ -13,7 +13,7 @@
 #include "cub2d.h"
 
 
-static int	get_textures(t_map *map, t_input *input)
+static int	get_textures(t_map *map, t_input *input, t_game *game)
 {
 	int fd;
 
@@ -21,46 +21,54 @@ static int	get_textures(t_map *map, t_input *input)
 	ft_printf("calloc double pointer\n");
 	if (!map->textures)
 		return (free_identifier(input), 0);
-	fd = open(input->no_texture, O_RDONLY);
+	fd = open(input->we_texture, O_RDONLY);
 	ft_printf("fd 1\n");
 	if (!fd)
 		return (free_identifier(input), 0);
-	map->textures[0] = ft_newsprite(input->no_texture);
+	map->textures[0] = ft_newsprite(input->we_texture);
 	ft_printf("calloc 1\n");
 	if (!map->textures[0])
 		return (free_identifier(input), 0);
+	mlx_xpm_file_to_image(game->mlx, map->textures[0]->relative_path, \
+							&map->textures[0]->width, &map->textures[0]->height);
 	close (fd);
-	fd = open(input->so_texture, O_RDONLY);
+	fd = open(input->ea_texture, O_RDONLY);
 	ft_printf("fd 2\n");
 	if (!fd)
 		return (free_identifier(input), 0);
-	map->textures[1] = ft_newsprite(input->so_texture);
+	map->textures[1] = ft_newsprite(input->ea_texture);
 	ft_printf("calloc 2\n");
 	if (!map->textures[1])
-		return (free_identifier(input), 0);
+		return (free_identifier(input), free_sprites(map->textures), 0);
+	mlx_xpm_file_to_image(game->mlx, map->textures[1]->relative_path, \
+							&map->textures[1]->width, &map->textures[1]->height);
 	close (fd);
-	fd = open(input->we_texture, O_RDONLY);
+	fd = open(input->no_texture, O_RDONLY);
 	ft_printf("fd 3\n");
 	if (!fd)
 		return (free_identifier(input), 0);
-	map->textures[2] = ft_newsprite(input->ea_texture);
+	map->textures[2] = ft_newsprite(input->no_texture);
 	ft_printf("calloc 3\n");
 	if (!map->textures[2])
 		return (free_identifier(input), 0);
+	mlx_xpm_file_to_image(game->mlx, map->textures[2]->relative_path, \
+							&map->textures[2]->width, &map->textures[2]->height);
 	close (fd);
-	fd = open(input->ea_texture, O_RDONLY);
+	fd = open(input->so_texture, O_RDONLY);
 	ft_printf("fd 4\n");
 	if (!fd)
 		return (free_identifier(input), 0);
-	map->textures[3] = ft_newsprite(input->we_texture);
+	map->textures[3] = ft_newsprite(input->so_texture);
 	ft_printf("calloc 4\n");
 	if (!map->textures[3])
-		return (free_identifier(input), free_sprites(map->textures), 0);
+		return (free_identifier(input), 0);
+	mlx_xpm_file_to_image(game->mlx, map->textures[3]->relative_path, \
+							&map->textures[3]->width, &map->textures[3]->height);
 	close (fd);
 	return (1);
 }
 
-int convert_struct(t_input *input, t_map *map)
+int convert_struct(t_input *input, t_map *map, t_game *game))
 {
 	if (!get_textures(map, input))
 		return (0);

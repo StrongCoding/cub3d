@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 15:08:46 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:23:08 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void		init_image(t_game *game, t_image *img);
 void		calc_distance_and_height(t_game *game);
 void		calc_stripe(t_game *game);
 int			my_mlx_pixel_get(t_image *img, int x, int y);
+void		minimap(t_game *game);
 
 #endif
