@@ -14,6 +14,7 @@
 # define CUB2D_H
 
 # include "../ft_printf/ft_printf.h"
+# include "../includes/cub3d.h"
 # include <stdlib.h>
 
 typedef struct s_start
@@ -35,14 +36,11 @@ typedef struct s_color
 
 typedef	struct s_map
 {
-	void	*no_text;
-	void 	*so_tex;
-	void 	*we_tex;
-	void 	*ea_tex;
-	t_color	fl_color;
-	t_color	ce_color;
-	char 	**map;
-	t_start	start_pos;
+	t_sprite	**textures;
+	t_color		fl_color;
+	t_color		ce_color;
+	char 		**map;
+	t_start		start_pos;
 }				t_map;
 
 
@@ -73,6 +71,7 @@ int				valid_char(char c);
 int 			convert_struct(t_input *input, t_map *map);
 void			free_array(char **array);
 void			free_identifier(t_input *input);
+void			free_sprites(t_sprite **sprite);
 
 
 #endif
