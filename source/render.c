@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 19:42:51 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 20:12:28 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:21:12 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,13 @@ int	render(t_game *game)
 			dda(game);
 			calc_distance_and_height(game);
 			calc_stripe(game);
-			int color = 0xFF8000;
-			//give x and y sides different brightness
-			// if (game->ray->side == 1)
-			// 	color = color / 2;
-			// if (game->ray->side == 2)
-			// 	color = get_trgb(0, 255, 0, 0);
-			// if (game->ray->side == 3)
-			// 	color = get_trgb(0, 255, 0, 255);
-			if (game->ray->direction == 1)
+			int color = 0xFF8000; // 0 west
+			if (game->ray->direction == 1) // east
 				color = color / 2;
-			if (game->ray->direction == 2)
+			if (game->ray->direction == 2)	//north
 				color = get_trgb(0, 255, 0, 0);
 			if (game->ray->direction == 3)
-				color = get_trgb(0, 255, 0, 255);
+				color = get_trgb(0, 255, 0, 255); // south
 			// if (first)
 				draw_vertical_line(x, game->ray->draw_start, game->ray->draw_end, color, game->img1);
 			// else
