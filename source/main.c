@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 11:00:56 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/13 09:33:55 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main(int argc, char **argv)
 	init_image(&game, &image1);
 	init_image(&game, &image2);
 	usleep(1000000);
-	// test_image1(&game, &image1);
 	game.img1 = &image1;
 	game.img2 = &image2;
 	game.ray->pos_x = info.start_pos.start_row + 0.5;

@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:36:13 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 11:42:49 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/12 14:24:12 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ void draw_vertical_line(int x, int y_start, int y_end, int color, t_image *img)
 		my_mlx_pixel_put(img, x, y_start, color);
 		y_start++;
 	}
+}
+
+int	my_mlx_pixel_get(t_image *img, int x, int y)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	return (*(unsigned int *)dst);
 }
 
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color)
