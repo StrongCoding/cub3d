@@ -18,6 +18,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	int fd;
 
 	map->textures = ft_calloc(5, sizeof(t_sprite *));
+	map->img = ft_calloc(5, sizeof(t_image *));
 	ft_printf("calloc double pointer\n");
 	if (!map->textures)
 		return (free_identifier(input), 0);
@@ -31,6 +32,8 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 		return (free_identifier(input), 0);
 	mlx_xpm_file_to_image(game->mlx, map->textures[0]->relative_path, \
 							&map->textures[0]->width, &map->textures[0]->height);
+	map->img[0]->addr = mlx_get_data_addr(map->img[0]->img, &map->img[0]->bits_per_pixel,
+								  &map->img[0]->line_length, &map->img[0]->endian);
 	close (fd);
 	fd = open(input->ea_texture, O_RDONLY);
 	ft_printf("fd 2\n");
@@ -42,6 +45,8 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 		return (free_identifier(input), free_sprites(map->textures), 0);
 	mlx_xpm_file_to_image(game->mlx, map->textures[1]->relative_path, \
 							&map->textures[1]->width, &map->textures[1]->height);
+	map->img[1]->addr = mlx_get_data_addr(map->img[1]->img, &map->img[1]->bits_per_pixel,
+										  &map->img[1]->line_length, &map->img[1]->endian);
 	close (fd);
 	fd = open(input->no_texture, O_RDONLY);
 	ft_printf("fd 3\n");
@@ -53,6 +58,8 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 		return (free_identifier(input), 0);
 	mlx_xpm_file_to_image(game->mlx, map->textures[2]->relative_path, \
 							&map->textures[2]->width, &map->textures[2]->height);
+	map->img[2]->addr = mlx_get_data_addr(map->img[2]->img, &map->img[2]->bits_per_pixel,
+										  &map->img[2]->line_length, &map->img[2]->endian);
 	close (fd);
 	fd = open(input->so_texture, O_RDONLY);
 	ft_printf("fd 4\n");
@@ -64,6 +71,8 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 		return (free_identifier(input), 0);
 	mlx_xpm_file_to_image(game->mlx, map->textures[3]->relative_path, \
 							&map->textures[3]->width, &map->textures[3]->height);
+	map->img[3]->addr = mlx_get_data_addr(map->img[3]->img, &map->img[3]->bits_per_pixel,
+										  &map->img[3]->line_length, &map->img[3]->endian);
 	close (fd);
 	return (1);
 }
