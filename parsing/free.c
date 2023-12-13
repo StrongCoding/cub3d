@@ -40,3 +40,16 @@ void	free_identifier(t_input *input)
 	else if (input->ce_color)
 		free(input->ce_color);
 }
+
+void	free_sprites(t_sprite **sprite)
+{
+	int i;
+
+	i = 0;
+	while(sprite[i])
+	{
+		free(sprite[i]);
+		i++;
+	}
+	free(sprite);
+}
