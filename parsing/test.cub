@@ -1,8 +1,8 @@
 
-NO test1.xpm
-SO test2.xpm
-WE test3.xpm
-EA test4.xpm
+NO sprites/wall.xpm
+SO sprites/wall.xpm
+WE sprites/wall.xpm
+EA sprites/wall.xpm
 F 190,190,190
 C 152,245,255
 

@@ -24,7 +24,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 		return (free_identifier(input), 0);
 	fd = open(input->we_texture, O_RDONLY);
 	ft_printf("fd 1\n");
-	if (!fd)
+	if (fd == -1)
 		return (free_identifier(input), 0);
 	map->textures[0] = ft_newsprite(input->we_texture);
 	ft_printf("calloc 1\n");
@@ -38,7 +38,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	close (fd);
 	fd = open(input->ea_texture, O_RDONLY);
 	ft_printf("fd 2\n");
-	if (!fd)
+	if (fd == -1)
 		return (free_identifier(input), 0);
 	map->textures[1] = ft_newsprite(input->ea_texture);
 	ft_printf("calloc 2\n");
@@ -52,7 +52,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	close (fd);
 	fd = open(input->no_texture, O_RDONLY);
 	ft_printf("fd 3\n");
-	if (!fd)
+	if (fd == -1)
 		return (free_identifier(input), 0);
 	map->textures[2] = ft_newsprite(input->no_texture);
 	ft_printf("calloc 3\n");
@@ -66,7 +66,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	close (fd);
 	fd = open(input->so_texture, O_RDONLY);
 	ft_printf("fd 4\n");
-	if (!fd)
+	if (fd == -1)
 		return (free_identifier(input), 0);
 	map->textures[3] = ft_newsprite(input->so_texture);
 	ft_printf("calloc 4\n");
