@@ -66,5 +66,6 @@ void		draw_ground_ceiling(t_image *img, t_game *game);
 void		init_image(t_game *game, t_image *img);
 void		calc_distance_and_height(t_game *game);
 void		calc_stripe(t_game *game);
+void		minimap(t_game *game);
 
 #endif
