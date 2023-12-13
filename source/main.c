@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 09:33:55 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/13 12:16:00 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 	t_input			input;
 	t_map			info;
 
+	if (argc != 2)
+		return (ft_printf("Error\nInvalid number of arguments"), 1);
 	if (!ending_cub(argv[1]))
 		return (ft_printf("Error\nInvalid name of map"));
 	input = read_map(argv[1]);
