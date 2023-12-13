@@ -58,6 +58,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	make -C ./parsing fclean
 	make -C $(LIBFT_DIR) fclean
 	make -C $(MLX_DIR) clean
 
