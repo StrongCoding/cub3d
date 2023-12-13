@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 15:09:23 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:44:26 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_raycasting
 	int			direction;
 	double		wall_x;
 	t_sprite	**tex;
+	t_image		**img;
 	int			tex_x;
 	int			tex_y;
 

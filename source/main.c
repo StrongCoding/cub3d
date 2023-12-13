@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:42:15 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:44:55 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	main(int argc, char **argv)
 	game.img1 = &image1;
 	game.img2 = &image2;
 	game.map = info.map;
+	ray.img = info.img;
+	ray.tex = info.textures;
 	game.ray->pos_x = info.start_pos.start_row + 0.5;
 	game.ray->pos_y = info.start_pos.start_col + 0.5;
 	game.ray->dir_x = -1;
