@@ -16,6 +16,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../ft_printf/ft_printf.h"
 # include "../parsing/cub2d.h"
+# include "structs.h"
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
@@ -43,74 +44,6 @@
 # define KEY_Q		113
 # define KEY_ESC	65307
 
-typedef struct s_sprite
-{
-	void	*img;
-	int		width;
-	int		height;
-	char	*relative_path;
-}				t_sprite;
-
-typedef struct s_image
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_image;
-
-typedef struct s_raycasting
-{
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	double	camera_x;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	perp_wall_dist;
-	int		side;
-	int		step_x;
-	int		step_y;
-	int		map_x;
-	int		map_y;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-	int		direction;
-
-}				t_raycasting;
-
-typedef struct s_game
-{
-	void		*mlx;
-	void		*win;
-	t_image		*img1;
-	t_image		*img2;
-	int			win_height;
-	int			win_width;
-	int			x;
-	int			y;
-	int			exit_x;
-	int			exit_y;
-	int			ceiling_color;
-	int			floor_color;
-	t_sprite	*wall;
-	char		**map;
-	char		**map_copy;
-	int			error;
-	int			movements;
-	int			frame;
-	int			end;
-	t_raycasting	*ray;
-}				t_game;
 
 int			key_hook(int keycode, t_game *game);
 int			key_hook_destroy(t_game *game);

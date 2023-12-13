@@ -15,49 +15,8 @@
 
 # include "../ft_printf/ft_printf.h"
 # include "../includes/cub3d.h"
+# include "../includes/structs.h"
 # include <stdlib.h>
-
-typedef struct s_start
-{
-	int		count_rows;
-	int 	count_cols;
-	char	start_dir;
-	int 	start_row;
-	int 	start_col;
-}				t_start;
-
-
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-}				t_color;
-
-typedef	struct s_map
-{
-	t_sprite	**textures;
-	t_color		fl_color;
-	t_color		ce_color;
-	char 		**map;
-	t_start		start_pos;
-}				t_map;
-
-
-typedef struct s_input
-{
-	char	*no_texture;
-	char 	*so_texture;
-	char 	*we_texture;
-	char 	*ea_texture;
-	int 	*fl_color;
-	int 	fl;
-	int 	*ce_color;
-	int 	ce;
-	char 	**map;
-	t_start	info;
-	int 	exit;
-}				t_input;
 
 t_input 		read_map(char *name);
 int				ending_cub(char *name);
