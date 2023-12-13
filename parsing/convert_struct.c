@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:39:27 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/11 15:39:27 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:10:51 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
