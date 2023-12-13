@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 12:40:22 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:09:23 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,33 @@ typedef struct s_image
 
 typedef struct s_raycasting
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	double	camera_x;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	double	perp_wall_dist;
-	int		side;
-	int		step_x;
-	int		step_y;
-	int		map_x;
-	int		map_y;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-	int		direction;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		camera_x;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		perp_wall_dist;
+	int			side;
+	int			step_x;
+	int			step_y;
+	int			map_x;
+	int			map_y;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			direction;
+	double		wall_x;
+	t_sprite	**tex;
+	int			tex_x;
+	int			tex_y;
 
 }				t_raycasting;
 
