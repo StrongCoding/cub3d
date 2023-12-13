@@ -23,10 +23,10 @@ void	minimap(t_game *game)
 		i = 0;
 		while (i < 100)
 		{
-			my_mlx_pixel_put(game->img1, 1, 1, game->floor_color);
-			mlx_put_image_to_window(game->mlx, game->win, game->img1, i, j);
+			my_mlx_pixel_put(game->img1, i, j, game->floor_color);
 			i++;
 		}
 		j++;
 	}
+	mlx_put_image_to_window(game->mlx, game->win, game->img1, 0, 0);
 }

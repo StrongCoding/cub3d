@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	printf("game loop starting\n");
 	if (!(game.error))
 	{
-		minimap(&game);
+		//minimap(&game);
 		mlx_hook(game.win, KeyPress, KeyPressMask, key_hook, &game);
 		mlx_hook(game.win, DestroyNotify, NoEventMask, key_hook_destroy, &game);
 		mlx_hook(game.win, Expose, ExposureMask, expose_hook, &game);

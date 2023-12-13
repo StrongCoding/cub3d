@@ -109,6 +109,7 @@ typedef struct s_color
 typedef	struct s_map
 {
 	t_sprite	**textures;
+	t_image		**img;
 	t_color		fl_color;
 	t_color		ce_color;
 	char 		**map;
