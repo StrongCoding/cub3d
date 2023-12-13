@@ -28,8 +28,6 @@ int	main(int argc, char **argv)
 	input = read_map(argv[1]);
 	if (!input.exit)
 		return (ft_printf("Error\nInvalid map"));
-	if (!convert_struct(&input, &info))
-		return (free_array(input.map), ft_printf("Error\nInvalid textures"));
 	init_struct(&game);
 	ft_bzero(&ray, sizeof(t_raycasting));
 	game.map = info.map;
@@ -37,6 +35,8 @@ int	main(int argc, char **argv)
 	game.floor_color = get_trgb(0, info.fl_color.r, info.fl_color.g, info.fl_color.b);
 	game.ray = &ray;
 	init_win(&game);
+	if (!convert_struct(&input, &info, &game))
+		return (free_array(input.map), ft_printf("Error\nInvalid textures"));
 	init_image(&game, &image1);
 	init_image(&game, &image2);
 	usleep(1000000);
@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 	printf("game loop starting\n");
 	if (!(game.error))
 	{
+		minimap(&game);
 		mlx_hook(game.win, KeyPress, KeyPressMask, key_hook, &game);
 		mlx_hook(game.win, DestroyNotify, NoEventMask, key_hook_destroy, &game);
 		mlx_hook(game.win, Expose, ExposureMask, expose_hook, &game);

@@ -68,9 +68,9 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	return (1);
 }
 
-int convert_struct(t_input *input, t_map *map, t_game *game))
+int convert_struct(t_input *input, t_map *map, t_game *game)
 {
-	if (!get_textures(map, input))
+	if (!get_textures(map, input, game))
 		return (0);
 	map->fl_color.r = input->fl_color[0];
 	map->fl_color.g = input->fl_color[1];
