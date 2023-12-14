@@ -133,4 +133,12 @@ typedef struct s_input
 	int 	exit;
 }				t_input;
 
+typedef struct s_minimap
+{
+	char	**map;
+	int 	count_w;
+	int 	count_h;
+	int 	pos_x_zero;
+	int 	pos_y_zero;
+}				t_minimap;
 #endif

@@ -48,6 +48,10 @@
 # define WIN_WIDTH	2560
 # define WIN_HEIGHT	1440
 
+# define MAP_PLAYER	20
+# define MAP_WALL	10
+
+
 
 
 int			key_hook(int keycode, t_game *game);
