@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 17:42:21 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 18:05:10 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 
 # define KEY_Q		113
 # define KEY_M		109
+# define KEY_I		105
 # define KEY_F		102
 # define KEY_ESC	65307
 # define KEY_SPACE  32
@@ -51,6 +52,7 @@
 # define FOV		0.66
 # define WIN_WIDTH	800
 # define WIN_HEIGHT	600
+# define FRAME_ANIMATION_TIME	100
 
 
 

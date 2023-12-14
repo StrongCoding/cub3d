@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:12:27 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 17:36:35 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 18:04:19 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	key_hook(int keycode, t_game *game)
 			game->print_fps = 0;
 		else
 			game->print_fps = 1;
+	else if (keycode == KEY_I)
+		if (game->animation)
+			game->animation = 0;
+		else
+			game->animation = 1;
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
 		ft_move_left(game);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)

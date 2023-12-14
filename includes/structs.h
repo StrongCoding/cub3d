@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/14 17:33:14 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:51:13 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_game
 	unsigned long long			time;
 	int		fps;
 	int		print_fps;
+	int		animation;
 }				t_game;
 
 typedef struct s_start
