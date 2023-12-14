@@ -6,20 +6,11 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 18:36:13 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 21:01:43 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:56:26 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void draw_vertical_line(int x, int y_start, int y_end, int color, t_image *img)
-{
-	while (y_start <= y_end)
-	{
-		my_mlx_pixel_put(img, x, y_start, color);
-		y_start++;
-	}
-}
 
 int	my_mlx_pixel_get(t_image *img, int x, int y)
 {

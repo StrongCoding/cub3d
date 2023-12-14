@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:54:24 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 11:42:47 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:57:57 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ void	bresenham(t_image *img, int x_start, int y_start, int x_dest, int y_dest)
 	int	delta_x;
 	int	delta_y;
 	int	error;
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	check_direction(&x_start, &y_start, &x_dest, &y_dest);
-
 	delta_x = x_dest - x_start;
 	delta_y = y_dest - y_start;
-
 	if (delta_x < 0)
 		delta_x = -delta_x;
 	if (delta_y < 0)

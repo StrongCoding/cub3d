@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:30:33 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/05 18:58:38 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:56:40 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ t_sprite	*ft_newsprite(char *content)
 	}
 	return (tmp);
 }
-
