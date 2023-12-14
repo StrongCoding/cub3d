@@ -28,11 +28,12 @@ static int fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		map->textures[count] = ft_newsprite(input->no_texture);
 	else if (count == 3)
 		map->textures[count] = ft_newsprite(input->so_texture);
-	ft_printf("calloc tex 1\n");
+	else if (count == 4)
+		map->textures[count] = ft_newsprite(input->so_texture);
+	else
 	if (!map->textures[0])
 		return (free_identifier(input), 0);
 	map->img[count] = ft_calloc (1, sizeof(t_image));
-	ft_printf("calloc img 1\n");
 	if (!map->img[count])
 		return (free_identifier(input), 0);
 	map->textures[count]->img = mlx_xpm_file_to_image(game->mlx, map->textures[count]->relative_path, \
@@ -72,17 +73,18 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	int i;
 
 	i = 0;
-	map->textures = ft_calloc(5, sizeof(t_sprite *));
-	map->img = ft_calloc(5, sizeof(t_image *));
+	map->textures = ft_calloc(6, sizeof(t_sprite *));
+	map->img = ft_calloc(6, sizeof(t_image *));
 	ft_printf("calloc double pointer\n");
 	if (!map->textures)
 		return (free_identifier(input), 0);
-	while (i < 4)
+	while (i < 5)
 	{
 		if (!fill_struct(map, input, game, i))
 			return (0);
 		i++;
 	}
+
 	fill_dir(input, game);
 	return (1);
 }
