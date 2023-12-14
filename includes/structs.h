@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:25:05 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:33:14 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_raycasting
 	t_image		**img;
 	int			tex_x;
 	int			tex_y;
-	int			door;
 
 }				t_raycasting;
 
@@ -81,7 +80,7 @@ typedef struct s_game
 	int			exit_y;
 	int			ceiling_color;
 	int			floor_color;
-	t_sprite	*door;
+	int			door;
 	char		**map;
 	char		**map_copy;
 	int			error;
@@ -89,7 +88,9 @@ typedef struct s_game
 	int			frame;
 	int			end;
 	t_raycasting	*ray;
-	t_image		*door_img;
+	unsigned long long			time;
+	int		fps;
+	int		print_fps;
 }				t_game;
 
 typedef struct s_start

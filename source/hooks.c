@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:12:27 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:04:58 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:36:35 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	printf("key_code: %i", keycode);
+	printf("key_code: %i\n", keycode);
 	if (keycode == KEY_UP || keycode == KEY_W)
 		ft_move_up(game);
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
@@ -24,6 +24,11 @@ int	key_hook(int keycode, t_game *game)
 			game->door = 0;
 		else
 			game->door = 1;
+	else if (keycode == KEY_F)
+		if (game->print_fps)
+			game->print_fps = 0;
+		else
+			game->print_fps = 1;
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
 		ft_move_left(game);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)

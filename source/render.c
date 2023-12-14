@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 19:42:51 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 10:40:43 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 17:44:59 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,14 @@ int	render(t_game *game)
 		draw_textures(game, x);
 		x++;
 	}
-	printf("dir_x: %f, dir_y: %f, plane_x: %f, plane_y: %f\n", game->ray->dir_x, game->ray->dir_y, game->ray->plane_x, game->ray->plane_y);
+	// printf("dir_x: %f, dir_y: %f, plane_x: %f, plane_y: %f\n", game->ray->dir_x, game->ray->dir_y, game->ray->plane_x, game->ray->plane_y);
+	// printf("time: %llu\n", get_time() - game->time);
+	// printf("get_time: %llu\n", get_time());
 	minimap(game);
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->img1->img, 0, 0);
+	print_fps(game);
+	
 	usleep(1000);
 	return (0);
 }

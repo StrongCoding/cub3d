@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:27:14 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 15:10:58 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:22:13 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init_struct(t_game *game)
 		// game->door_img->addr = mlx_get_data_addr(game->door_img->img, &game->door_img->bits_per_pixel, &game->door_img->line_length, &game->door_img->endian);
 		game->win_height = WIN_HEIGHT;
 		game->win_width = WIN_WIDTH;
+		game->time = get_time();
 	}
 	else
 		ft_printf("Error\nmlx initialization error!\n");
