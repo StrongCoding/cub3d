@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:44:26 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:25:05 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_raycasting
 	t_image		**img;
 	int			tex_x;
 	int			tex_y;
+	int			door;
 
 }				t_raycasting;
 
@@ -80,7 +81,7 @@ typedef struct s_game
 	int			exit_y;
 	int			ceiling_color;
 	int			floor_color;
-	t_sprite	*wall;
+	t_sprite	*door;
 	char		**map;
 	char		**map_copy;
 	int			error;
@@ -88,6 +89,7 @@ typedef struct s_game
 	int			frame;
 	int			end;
 	t_raycasting	*ray;
+	t_image		*door_img;
 }				t_game;
 
 typedef struct s_start

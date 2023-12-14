@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:39:27 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:10:51 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:24:50 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ static int fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		map->textures[count] = ft_newsprite(input->no_texture);
 	else if (count == 3)
 		map->textures[count] = ft_newsprite(input->so_texture);
-	ft_printf("calloc tex 1\n");
+	else if (count == 4)
+		map->textures[count] = ft_newsprite("sprites/door.xpm");
+	ft_printf("calloc tex %i\n", count);
 	if (!map->textures[0])
 		return (free_identifier(input), 0);
 	map->img[count] = ft_calloc (1, sizeof(t_image));
-	ft_printf("calloc img 1\n");
+	ft_printf("calloc img %i\n", count);
 	if (!map->img[count])
 		return (free_identifier(input), 0);
 	map->textures[count]->img = mlx_xpm_file_to_image(game->mlx, map->textures[count]->relative_path, \
@@ -72,12 +74,12 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	int i;
 
 	i = 0;
-	map->textures = ft_calloc(5, sizeof(t_sprite *));
-	map->img = ft_calloc(5, sizeof(t_image *));
+	map->textures = ft_calloc(6, sizeof(t_sprite *));
+	map->img = ft_calloc(6, sizeof(t_image *));
 	ft_printf("calloc double pointer\n");
 	if (!map->textures)
 		return (free_identifier(input), 0);
-	while (i < 4)
+	while (i < 5)
 	{
 		if (!fill_struct(map, input, game, i))
 			return (0);

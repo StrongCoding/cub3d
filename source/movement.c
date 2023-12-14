@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:11:38 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 11:40:19 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 15:31:05 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,13 @@ int	ft_move_up(t_game *game)
 	double	move_speed;
 
 	move_speed = 0.3;
-	if (game->map[(int)(game->ray->pos_x + game->ray->dir_x * move_speed)][(int)game->ray->pos_y] == '0')
+	if (game->map[(int)(game->ray->pos_x + game->ray->dir_x * move_speed)][(int)game->ray->pos_y] == '0' )
+		game->ray->pos_x += game->ray->dir_x * move_speed;
+	else if (game->map[(int)(game->ray->pos_x + game->ray->dir_x * move_speed)][(int)game->ray->pos_y] == '2' && !game->door)
 		game->ray->pos_x += game->ray->dir_x * move_speed;
 	if (game->map[(int)game->ray->pos_x][(int)(game->ray->pos_y + game->ray->dir_y * move_speed)] == '0')
+		game->ray->pos_y += game->ray->dir_y * move_speed;
+	else if (game->map[(int)game->ray->pos_x][(int)(game->ray->pos_y + game->ray->dir_y * move_speed)] == '2' && !game->door)
 		game->ray->pos_y += game->ray->dir_y * move_speed;
 	printf("move up\n");
 	return (0);
@@ -69,7 +73,11 @@ int	ft_move_down(t_game *game)
 	move_speed = 0.3;
 	if (game->map[(int)(game->ray->pos_x - game->ray->dir_x * move_speed)][(int)game->ray->pos_y] == '0')
 		game->ray->pos_x -= game->ray->dir_x * move_speed;
+	else if (game->map[(int)(game->ray->pos_x - game->ray->dir_x * move_speed)][(int)game->ray->pos_y] == '2' && !game->door)
+		game->ray->pos_x -= game->ray->dir_x * move_speed;
 	if (game->map[(int)game->ray->pos_x][(int)(game->ray->pos_y - game->ray->dir_y * move_speed)] == '0')
+		game->ray->pos_y -= game->ray->dir_y * move_speed;
+	else if (game->map[(int)game->ray->pos_x][(int)(game->ray->pos_y - game->ray->dir_y * move_speed)] == '2' && !game->door)
 		game->ray->pos_y -= game->ray->dir_y * move_speed;
 	printf("move down\n");
 	return (0);
