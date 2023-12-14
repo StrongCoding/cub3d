@@ -20,7 +20,14 @@ static int fill_struct(t_map *map, t_input *input, t_game *game, int count)
 	ft_printf("fd 1\n");
 	if (fd == -1)
 		return (free_identifier(input), 0);
-	map->textures[count] = ft_newsprite(input->we_texture);
+	if (count == 0)
+		map->textures[count] = ft_newsprite(input->we_texture);
+	else if (count == 1)
+		map->textures[count] = ft_newsprite(input->ea_texture);
+	else if (count == 2)
+		map->textures[count] = ft_newsprite(input->no_texture);
+	else if (count == 3)
+		map->textures[count] = ft_newsprite(input->so_texture);
 	ft_printf("calloc tex 1\n");
 	if (!map->textures[0])
 		return (free_identifier(input), 0);
