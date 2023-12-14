@@ -121,20 +121,7 @@ static void	draw_space(t_game *game, t_minimap *mm)
 void	minimap(t_game *game)
 {
 	t_minimap	mm;
-	int			i;
-	int			j;
 
-	j = 0;
-	while (j < WIN_HEIGHT / 6)
-	{
-		i = 0;
-		while (i < WIN_WIDTH / 6)
-		{
-			my_mlx_pixel_put(game->img1, i, j, get_trgb(-100, 160, 160, 160));
-			i++;
-		}
-		j++;
-	}
 	fill_struct(&mm, game);
 	draw_space(game, &mm);
 	draw_player(game);
