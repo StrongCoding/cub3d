@@ -44,6 +44,9 @@
 # define KEY_Q		113
 # define KEY_ESC	65307
 
+# define FOV		0.66
+
+
 
 int			key_hook(int keycode, t_game *game);
 int			key_hook_destroy(t_game *game);

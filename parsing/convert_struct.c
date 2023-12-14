@@ -43,7 +43,29 @@ static int fill_struct(t_map *map, t_input *input, t_game *game, int count)
 	return (1);
 }
 
-
+static void	fill_dir(t_input *input, t_game *game)
+{
+	if (input->info.start_dir == 'N')
+	{
+		game->ray->dir_x = -1;
+		game->ray->plane_y = FOV;
+	}
+	else if (input->info.start_dir == 'S')
+	{
+		game->ray->dir_x = 1;
+		game->ray->plane_y = -FOV;
+	}
+	else if (input->info.start_dir == 'E')
+	{
+		game->ray->dir_y = 1;
+		game->ray->plane_x = FOV;
+	}
+	else if (input->info.start_dir == 'W')
+	{
+		game->ray->dir_y = -1;
+		game->ray->plane_x = -FOV;
+	}
+}
 
 static int	get_textures(t_map *map, t_input *input, t_game *game)
 {
@@ -61,6 +83,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 			return (0);
 		i++;
 	}
+	fill_dir(input, game);
 	return (1);
 }
 
