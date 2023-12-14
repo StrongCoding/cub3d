@@ -45,8 +45,8 @@
 # define KEY_ESC	65307
 
 # define FOV		0.66
-# define WIN_WIDTH	2560
-# define WIN_HEIGHT	1440
+# define WIN_WIDTH	1920
+# define WIN_HEIGHT	1080
 
 # define MAP_PLAYER	20
 # define MAP_WALL	10
