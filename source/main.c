@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:44:55 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:34:34 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\nInvalid map"));
 	init_struct(&game);
 	ft_bzero(&ray, sizeof(t_raycasting));
-	game.ceiling_color = get_trgb(0, info.ce_color.r, info.ce_color.g, info.ce_color.b);
-	game.floor_color = get_trgb(0, info.fl_color.r, info.fl_color.g, info.fl_color.b);
 	game.ray = &ray;
 	init_win(&game);
 	if (!convert_struct(&input, &info, &game))
 		return (free_array(input.map), ft_printf("Error\nInvalid textures"));
 	init_image(&game, &image1);
+	game.ceiling_color = get_trgb(0, info.ce_color.r, info.ce_color.g, info.ce_color.b);
+	game.floor_color = get_trgb(0, info.fl_color.r, info.fl_color.g, info.fl_color.b);
 	init_image(&game, &image2);
 	usleep(1000000);
 	game.img1 = &image1;
@@ -46,8 +46,8 @@ int	main(int argc, char **argv)
 	ray.tex = info.textures;
 	game.ray->pos_x = info.start_pos.start_row + 0.5;
 	game.ray->pos_y = info.start_pos.start_col + 0.5;
-	game.ray->dir_x = -1;
-	game.ray->plane_y = 0.66;
+	// game.ray->dir_x = -1;
+	// game.ray->plane_y = 0.66;
 	printf("game loop starting\n");
 	if (!(game.error))
 	{

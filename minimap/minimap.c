@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:01:20 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 15:01:20 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:41:11 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ void	minimap(t_game *game)
 		}
 		j++;
 	}
-	mlx_put_image_to_window(game->mlx, game->win, game->img1, 0, 0);
 }

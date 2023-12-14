@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:27:14 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/11 19:13:11 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:43:20 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_struct(t_game *game)
 		game->wall->img = mlx_xpm_file_to_image(game->mlx,
 				game->wall->relative_path, &game->wall->width,
 				&game->wall->height);
-		game->win_height = 600;
-		game->win_width = 800;
+		game->win_height = WIN_HEIGHT;
+		game->win_width = WIN_WIDTH;
 	}
 	else
 		ft_printf("Error\nmlx initialization error!\n");

@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 20:53:56 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:47:47 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define KEY_ESC	65307
 
 # define FOV		0.66
+# define WIN_WIDTH	2560
+# define WIN_HEIGHT	1440
 
 
 
