@@ -12,14 +12,8 @@
 
 #include "cub2d.h"
 
-static void	fill_input(t_input *input, char **map, int length)
+static void	get_input(t_input *input, char **map, int length)
 {
-	int	i;
-	int j;
-	int s_bool;
-
-	j = 0;
-	s_bool = 0;
 	find_identifier(input, map, &length);
 	if (input->exit == 0)
 		return ;
@@ -29,10 +23,21 @@ static void	fill_input(t_input *input, char **map, int length)
 		input->exit = 0;
 		return (free_identifier(input));
 	}
+}
+
+static void	fill_input(t_input *input, char **map, int length)
+{
+	int	i;
+	int	j;
+	int	s_bool;
+
+	j = 0;
+	s_bool = 0;
+	get_input(input, map, length);
 	while (input->map[j])
 	{
 		i = 0;
-		while(input->map[j][i] != '\0')
+		while (input->map[j][i] != '\0')
 		{
 			if (!check_map(input->map, j, i, &s_bool))
 				input->exit = 0;
@@ -45,13 +50,12 @@ static void	fill_input(t_input *input, char **map, int length)
 		input->exit = 0;
 		return (free_identifier(input), free_array(map));
 	}
-
 }
 
 static void	get_file(int fd, t_input *input, char *name)
 {
 	int		line;
-	int 	length;
+	int		length;
 	char	**map;
 
 	line = 0;
