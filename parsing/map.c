@@ -34,6 +34,8 @@ static void	fill_input(t_input *input, char **map, int length)
 	j = 0;
 	s_bool = 0;
 	get_input(input, map, length);
+	if (input->exit == 0)
+		return ;
 	while (input->map[j])
 	{
 		i = 0;
