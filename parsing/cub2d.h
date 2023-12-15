@@ -22,6 +22,7 @@ t_input 		read_map(char *name);
 int				ending_cub(char *name);
 int				map_length(char *name);
 void			find_identifier(t_input *input, char **map, int *line);
+void			get_identifier_two(t_input *input, char **map, int *i, int bool);
 int				fl_colors(t_input *input, char *map);
 int				ce_colors(t_input *input, char *map);
 char			**get_map(t_input *input, char **file, int line);
