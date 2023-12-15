@@ -39,11 +39,30 @@ static char	**alloc_map(t_input *input)
 	return (map);
 }
 
-char	**fill_map(t_input *input, char **file, int line)
+static void	save_start_pos(t_input *input, char dir, int row, int col)
+{
+	if (valid_char(dir) == 2)
+	{
+		input->info.start_dir = dir;
+		input->info.start_row = row;
+		input->info.start_col = col;
+	}
+}
+
+static void	fill_space(int col, int row, char ***map, t_input *input)
+{
+	while (col < input->info.count_cols)
+	{
+		(*map)[row][col] = ' ';
+		col++;
+	}
+}
+
+static char	**fill_map(t_input *input, char **file, int line)
 {
 	char	**map;
-	int 	col;
-	int 	row;
+	int		col;
+	int		row;
 
 	map = alloc_map(input);
 	if (!map)
@@ -54,20 +73,11 @@ char	**fill_map(t_input *input, char **file, int line)
 		col = 0;
 		while (file[line][col] != '\n' && file[line][col] != '\0')
 		{
-			if (valid_char(file[line][col]) == 2)
-			{
-				input->info.start_dir = file[line][col];
-				input->info.start_row = row;
-				input->info.start_col = col;
-			}
+			save_start_pos(input, file[line][col], row, col);
 			map[row][col] = file[line][col];
 			col++;
 		}
-		while (col < input->info.count_cols)
-		{
-			map[row][col] = ' ';
-			col++;
-		}
+		fill_space(col, row, &map, input);
 		line++;
 		row++;
 	}
@@ -77,13 +87,13 @@ char	**fill_map(t_input *input, char **file, int line)
 char	**get_map(t_input *input, char **file, int line)
 {
 	int	i;
-	int start;
+	int	start;
 
 	start = line;
 	while (file[line])
 	{
 		i = 0;
-		while(file[line][i] != '\n' && file[line][i] != '\0')
+		while (file[line][i] != '\n' && file[line][i] != '\0')
 			i++;
 		if (i > input->info.count_cols)
 			input->info.count_cols = i;
@@ -91,6 +101,6 @@ char	**get_map(t_input *input, char **file, int line)
 		(input->info.count_rows)++;
 	}
 	if (input->exit == 0)
-		return (NULL);;
-	return (fill_map)(input, file, start);
+		return (NULL);
+	return (fill_map(input, file, start));
 }
