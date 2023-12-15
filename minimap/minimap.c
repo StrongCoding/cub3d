@@ -62,7 +62,7 @@ static void	draw_square(int x, int y, int color, t_game *game)
 	}
 }
 
-static void	draw_wall(t_game *game, t_minimap *mm)
+static void	draw_wall(t_game *game, t_minimap *mm, int length)
 {
 	int i;
 	int j;
@@ -79,7 +79,7 @@ static void	draw_wall(t_game *game, t_minimap *mm)
 		num = mm->count_w / 2 * -1;
 		while (num < mm->count_w / 2)
 		{
-			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k >= 0 && game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] == '1')
+			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k >= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && (int)(int)game->ray->pos_x + k < length && game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] == '1')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
 			num++;
 			i++;
@@ -90,7 +90,7 @@ static void	draw_wall(t_game *game, t_minimap *mm)
 	game->img2 = NULL;
 }
 
-static void	draw_space(t_game *game, t_minimap *mm)
+static void	draw_space(t_game *game, t_minimap *mm, int length)
 {
 	int i;
 	int j;
@@ -107,7 +107,7 @@ static void	draw_space(t_game *game, t_minimap *mm)
 		num = mm->count_w / 2 * -1;
 		while (num < mm->count_w / 2)
 		{
-			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k >= 0 && game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] == '0')
+			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k >= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && (int)(int)game->ray->pos_x + k < length && game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] == '0')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
 			num++;
 			i++;
@@ -121,9 +121,13 @@ static void	draw_space(t_game *game, t_minimap *mm)
 void	minimap(t_game *game)
 {
 	t_minimap	mm;
+	int 		length;
 
+	length = 0;
+	while (game->map[length])
+		length++;
 	fill_struct(&mm, game);
-	draw_space(game, &mm);
+	draw_space(game, &mm, length);
 	draw_player(game);
-	draw_wall(game, &mm);
+	draw_wall(game, &mm, length);
 }
