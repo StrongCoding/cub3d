@@ -12,7 +12,7 @@
 
 #include "cub2d.h"
 
-static int fill_struct(t_map *map, t_input *input, t_game *game, int count)
+static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 {
 	int	fd;
 
@@ -30,16 +30,17 @@ static int fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		map->textures[count] = ft_newsprite(input->so_texture);
 	else if (count == 4)
 		map->textures[count] = ft_newsprite(input->so_texture);
-	else
-	if (!map->textures[0])
+	if (!map->textures[count])
 		return (free_identifier(input), 0);
 	map->img[count] = ft_calloc (1, sizeof(t_image));
 	if (!map->img[count])
 		return (free_identifier(input), 0);
-	map->textures[count]->img = mlx_xpm_file_to_image(game->mlx, map->textures[count]->relative_path, \
-							&map->textures[count]->width, &map->textures[count]->height);
-	map->img[count]->addr = mlx_get_data_addr(map->textures[count]->img, &map->img[count]->bits_per_pixel,
-										  &map->img[count]->line_length, &map->img[count]->endian);
+	map->textures[count]->img = mlx_xpm_file_to_image(game->mlx, \
+	map->textures[count]->relative_path, &map->textures[count]->width, \
+	&map->textures[count]->height);
+	map->img[count]->addr = mlx_get_data_addr(map->textures[count]->img, \
+	&map->img[count]->bits_per_pixel, &map->img[count]->line_length, \
+	&map->img[count]->endian);
 	close (fd);
 	return (1);
 }
@@ -70,7 +71,7 @@ static void	fill_dir(t_input *input, t_game *game)
 
 static int	get_textures(t_map *map, t_input *input, t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	map->textures = ft_calloc(6, sizeof(t_sprite *));
@@ -84,12 +85,11 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 			return (0);
 		i++;
 	}
-
 	fill_dir(input, game);
 	return (1);
 }
 
-int convert_struct(t_input *input, t_map *map, t_game *game)
+int	convert_struct(t_input *input, t_map *map, t_game *game)
 {
 	if (!get_textures(map, input, game))
 		return (0);
