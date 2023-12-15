@@ -43,10 +43,10 @@ void	free_identifier(t_input *input)
 
 void	free_sprites(t_sprite **sprite)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(sprite[i])
+	while (sprite[i])
 	{
 		free(sprite[i]);
 		i++;
