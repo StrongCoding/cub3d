@@ -23,7 +23,6 @@ static void	fill_struct(t_minimap *mm, t_game *game)
 	mm->pos_y_zero = WIN_HEIGHT / 6 / 2;
 }
 
-
 void	minimap(t_game *game)
 {
 	t_minimap	mm;
@@ -33,7 +32,7 @@ void	minimap(t_game *game)
 	while (game->map[length])
 		length++;
 	fill_struct(&mm, game);
-	draw_mm_space(game, &mm, length);
+	draw_mm_space(game, &mm, length, mm.count_h / 2 * -1);
 	draw_mm_player(game);
-	draw_mm_wall(game, &mm, length);
+	draw_mm_wall(game, &mm, length, mm.count_h / 2 * -1);
 }

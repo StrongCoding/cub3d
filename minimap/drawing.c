@@ -56,22 +56,20 @@ static void	draw_square(int x, int y, int color, t_game *game)
 	}
 }
 
-void	draw_mm_wall(t_game *game, t_minimap *mm, int length)
+void	draw_mm_wall(t_game *game, t_minimap *mm, int length, int k)
 {
 	int	i;
 	int	j;
 	int	num;
 	int	color;
-	int	k;
 
-	k = mm->count_h / 2 * -1;
 	j = 0;
 	color = get_trgb(0, 130, 255, 25);
 	while (k < mm->count_h / 2)
 	{
 		i = 0;
-		num = mm->count_w / 2 * -1;
-		while (num < mm->count_w / 2)
+		num = mm->count_w / 2 * -1 - 1;
+		while (++num < mm->count_w / 2)
 		{
 			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
 			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
@@ -79,7 +77,6 @@ void	draw_mm_wall(t_game *game, t_minimap *mm, int length)
 			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
 			== '1')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
-			num++;
 			i++;
 		}
 		k++;
@@ -88,22 +85,20 @@ void	draw_mm_wall(t_game *game, t_minimap *mm, int length)
 	game->img2 = NULL;
 }
 
-void	draw_mm_space(t_game *game, t_minimap *mm, int length)
+void	draw_mm_space(t_game *game, t_minimap *mm, int length, int k)
 {
 	int	i;
 	int	j;
 	int	num;
 	int	color;
-	int	k;
 
-	k = mm->count_h / 2 * -1;
 	j = 0;
 	color = get_trgb(0, 30, 25, 255);
 	while (k < mm->count_h / 2)
 	{
 		i = 0;
-		num = mm->count_w / 2 * -1;
-		while (num < mm->count_w / 2)
+		num = mm->count_w / 2 * -1 - 1;
+		while (++num < mm->count_w / 2)
 		{
 			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
 			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
@@ -111,7 +106,6 @@ void	draw_mm_space(t_game *game, t_minimap *mm, int length)
 			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
 			== '0')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
-			num++;
 			i++;
 		}
 		k++;
