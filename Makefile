@@ -20,7 +20,8 @@ FILES 		=	main \
                 ../parsing/map_check \
                 ../parsing/convert_struct \
                 ../parsing/free \
-                ../minimap/minimap
+                ../minimap/minimap \
+                ../minimap/drawing
 
 SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
 OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
