@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 10:47:47 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 12:38:13 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 # define KEY_ESC	65307
 
 # define FOV		0.66
-# define WIN_WIDTH	2560
-# define WIN_HEIGHT	1440
+# define WIN_WIDTH	800
+# define WIN_HEIGHT	600
 
 
 
@@ -62,9 +62,7 @@ t_sprite	*ft_newsprite(char *content);
 void		init_win(t_game *game);
 void		put_square(t_image *img);
 int			get_trgb(int t, int r, int g, int b);
-void		bresenham(t_image *img, int x_start, int y_start, int x_dest, int y_dest);
 void		my_mlx_pixel_put(t_image *img, int x, int y, int color);
-void		draw_vertical_line(int x, int y_start, int y_end, int color, t_image *img);
 void		dda(t_game *game);
 int			render(t_game *game);
 void		draw_ground_ceiling(t_image *img, t_game *game);
@@ -76,5 +74,7 @@ void		minimap(t_game *game);
 void		draw_textures(t_game *game, int x);
 void		set_wall_hit(t_game *game);
 void		get_x_tex(t_game *game);
+int			mouse_hook(t_game *game);
+void		mouse_movement(t_game *game);
 
 #endif

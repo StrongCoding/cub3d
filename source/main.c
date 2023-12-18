@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 10:34:34 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 12:46:41 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 	game.ray->pos_y = info.start_pos.start_col + 0.5;
 	// game.ray->dir_x = -1;
 	// game.ray->plane_y = 0.66;
+	mlx_mouse_move(game.mlx, game.win, game.win_width / 2, game.win_height / 2);
 	printf("game loop starting\n");
 	if (!(game.error))
 	{

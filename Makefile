@@ -11,6 +11,7 @@ FILES 		=	main \
 				bresenham \
 				dda \
 				painting \
+				mouse \
 				render_textures \
 				../parsing/map \
                 ../parsing/map_lengths \
