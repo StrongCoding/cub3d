@@ -23,6 +23,35 @@ static void	fill_struct(t_minimap *mm, t_game *game)
 	mm->pos_y_zero = WIN_HEIGHT / 6 / 2;
 }
 
+static void	draw_fov(t_game *game, t_minimap *mm)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < MAP_PLAYER)
+	{
+		j = 0;
+		while (j < i)
+		{
+			my_mlx_pixel_put(game->img1, i + mm->pos_x_zero , j + mm->pos_y_zero, get_trgb(0, 179, 43, 43));
+			j++;
+		}
+		i++;
+	}
+	i = MAP_PLAYER - 1;
+	while (i > game->ray->pos_x)
+	{
+		j = 0;
+		while (j < i)
+		{
+			my_mlx_pixel_put(game->img1, i + mm->pos_x_zero, j + mm->pos_y_zero, get_trgb(0, 179, 43, 43));
+			j++;
+		}
+		i--;
+	}
+}
+
 void	minimap(t_game *game)
 {
 	t_minimap	mm;
@@ -34,5 +63,6 @@ void	minimap(t_game *game)
 	fill_struct(&mm, game);
 	draw_mm_space(game, &mm, length, mm.count_h / 2 * -1);
 	draw_mm_player(game);
+	draw_fov(game, &mm);
 	draw_mm_wall(game, &mm, length, mm.count_h / 2 * -1);
 }

@@ -40,16 +40,23 @@ void	draw_mm_player(t_game *game)
 
 static void	draw_square(int x, int y, int color, t_game *game)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	int 	rotated_x;
+	int 	rotated_y;
+	double	angle;
 
+	angle = 45 * M_PI / 180.0;
 	i = 0;
 	while (i < MAP_WALL)
 	{
 		j = 0;
 		while (j < MAP_WALL)
 		{
-			my_mlx_pixel_put(game->img1, i + x, j + y, color);
+			rotated_x = (int)((i - MAP_WALL / 2) * cos(angle) - (j - MAP_WALL / 2) * sin(angle) + x + MAP_WALL / 2);
+			rotated_y = (int)((i - MAP_WALL / 2) * sin(angle) + (j - MAP_WALL / 2) * cos(angle) + y + MAP_WALL / 2);
+			if (rotated_x >= 0 && rotated_x < WIN_WIDTH / 6 && rotated_y >= 0 && rotated_y <= WIN_HEIGHT / 6)
+				my_mlx_pixel_put(game->img1, rotated_x, rotated_y, color);
 			j++;
 		}
 		i++;
