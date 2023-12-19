@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:42:59 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/13 20:58:51 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:38:32 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_textures(t_game *game, int x)
 			& (game->ray->tex[game->ray->direction]->height - 1);
 		tex_pos += step;
 		color = my_mlx_pixel_get(game->ray->img[game->ray->direction],
-				game->ray->tex_x, game->ray->tex_y);
+			game->ray->tex_x, game->ray->tex_y);
 		if (game->ray->side == 1)
 			color = (color >> 1) & 8355711;
 		my_mlx_pixel_put(game->img1, x, y, color);

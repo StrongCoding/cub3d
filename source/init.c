@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:27:14 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 10:43:20 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:22:13 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ void	init_struct(t_game *game)
 	if (mlx)
 	{
 		game->mlx = mlx;
-		game->wall = ft_newsprite("sprites/wall.xpm");
-		game->wall->img = mlx_xpm_file_to_image(game->mlx,
-				game->wall->relative_path, &game->wall->width,
-				&game->wall->height);
+		// game->door = ft_newsprite("sprites/door.xpm");
+		// game->door->img = mlx_xpm_file_to_image(game->mlx,
+		// 		game->door->relative_path, &game->door->width,
+		// 		&game->door->height);
+		// game->door_img->img = game->door->img;
+		// game->door_img->addr = mlx_get_data_addr(game->door_img->img, &game->door_img->bits_per_pixel, &game->door_img->line_length, &game->door_img->endian);
 		game->win_height = WIN_HEIGHT;
 		game->win_width = WIN_WIDTH;
+		game->time = get_time();
 	}
 	else
 		ft_printf("Error\nmlx initialization error!\n");

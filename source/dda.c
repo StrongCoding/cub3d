@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:40:09 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/12 20:12:03 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 14:34:34 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,13 @@ void	dda(t_game *game)
 			else
 				game->ray->direction = 1;
 		}
-		if (game->map[game->ray->map_x][game->ray->map_y] > '0')
+		if (game->map[game->ray->map_x][game->ray->map_y] == '1')
 			hit = 1;
+		if (game->map[game->ray->map_x][game->ray->map_y] > '1' && game->door)
+		{
+			game->ray->direction = 4;
+			hit = 1;
+		}
+			
 	}
 }

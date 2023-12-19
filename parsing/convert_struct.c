@@ -39,8 +39,9 @@ static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 	else if (count == 3)
 		map->textures[count] = ft_newsprite(input->so_texture);
 	else if (count == 4)
-		map->textures[count] = ft_newsprite(input->so_texture);
-	if (!map->textures[count])
+		map->textures[count] = ft_newsprite("sprites/door.xpm");
+	ft_printf("calloc tex %i\n", count);
+	if (!map->textures[0])
 		return (free_identifier(input), 0);
 	map->img[count] = ft_calloc (1, sizeof(t_image));
 	if (!map->img[count])

@@ -12,6 +12,9 @@ FILES 		=	main \
 				dda \
 				painting \
 				mouse \
+				fps \
+				utils \
+				animation \
 				render_textures \
 				../parsing/map \
                 ../parsing/map_lengths \

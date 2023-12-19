@@ -21,6 +21,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <math.h>
+# include <sys/time.h>
 
 # define WALL		49
 # define GROUND		48
@@ -42,7 +43,11 @@
 # define KEY_DOWN	65364
 
 # define KEY_Q		113
+# define KEY_M		109
+# define KEY_I		105
+# define KEY_F		102
 # define KEY_ESC	65307
+# define KEY_SPACE  32
 
 # define FOV		0.66
 # define WIN_WIDTH	1920
@@ -51,6 +56,7 @@
 # define MAP_PLAYER	10
 # define MAP_WALL	10
 
+# define FRAME_ANIMATION_TIME	100
 
 
 
@@ -83,5 +89,8 @@ void		set_wall_hit(t_game *game);
 void		get_x_tex(t_game *game);
 int			mouse_hook(t_game *game);
 void		mouse_movement(t_game *game);
+unsigned long long	get_time(void);
+void	print_fps(t_game *game);
+void	toggle(int *var);
 
 #endif
