@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 10:47:47 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:14:27 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ int					key_hook(int keycode, t_game *game);
 int					key_hook_destroy(t_game *game);
 int					expose_hook(t_game *game);
 void				init_struct(t_game *game);
-int					ft_move_right(t_game *game);
-int					ft_move_left(t_game *game);
-int					ft_move_up(t_game *game);
-int					ft_move_down(t_game *game);
+int					move_right(t_game *game);
+int					move_left(t_game *game);
+int					move_up(t_game *game);
+int					move_down(t_game *game);
 t_sprite			*ft_newsprite(char *content);
 void				init_win(t_game *game);
 void				put_square(t_image *img);
