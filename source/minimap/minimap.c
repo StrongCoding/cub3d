@@ -35,6 +35,6 @@ void	minimap(t_game *game)
 	fill_struct(&mm, game, length);
 	draw_mm_space(game, &mm, mm.count_h / 2 * -1);
 	draw_mm_door(game, &mm, mm.count_h / 2 * -1);
-	draw_mm_player(game);
+	draw_mm_player(game, &mm);
 	draw_mm_wall(game, &mm, mm.count_h / 2 * -1);
 }

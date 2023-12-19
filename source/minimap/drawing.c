@@ -12,29 +12,31 @@
 
 #include "cub3d.h"
 
-void	draw_mm_player(t_game *game)
+void	draw_mm_player(t_game *game, t_minimap *mm)
 {
-	int	i;
-	int	j;
-
-	j = MAP_PLAYER / 2 * -1;
-	while (j < MAP_PLAYER / 2)
+	int	x;
+	int	y;
+	x = (MAP_PLAYER / 2) - (MAP_PLAYER / 5);
+	while (x < (MAP_PLAYER / 2) + (MAP_PLAYER / 5))
 	{
-		i = MAP_PLAYER / 2 * -1;
-		while (i < MAP_PLAYER / 2)
+		y = 0;
+		while (y < MAP_PLAYER)
 		{
-			if (j == MAP_PLAYER / 2 * -1 || j == MAP_PLAYER / 2 - 1 || j == 0 \
-			|| i == MAP_PLAYER / 2 * -1 || i == MAP_PLAYER / 2 - 1 || i == 0)
-				my_mlx_pixel_put(game->img1, WIN_WIDTH / 6 / 2 + i + \
-				(MAP_PLAYER / 2), WIN_HEIGHT / 6 / 2 + j + (MAP_PLAYER / 2), \
-				get_trgb(0, 14, 3, 3));
-			else
-				my_mlx_pixel_put(game->img1, WIN_WIDTH / 6 / 2 + i + \
-				(MAP_PLAYER / 2), WIN_HEIGHT / 6 / 2 + j + (MAP_PLAYER / 2), \
-				get_trgb(0, 215, 0, 0));
-			i++;
+			my_mlx_pixel_put(game->img1, x + mm->pos_x_zero, y + mm->pos_y_zero, get_trgb(0, 14, 3, 3));
+			y++;
 		}
-		j++;
+		x++;
+	}
+	x = 0;
+	while (x < MAP_PLAYER / 2)
+	{
+		y = x + MAP_PLAYER / 2;
+		while (y >= -x + MAP_PLAYER / 2)
+		{
+			my_mlx_pixel_put(game->img1, y + mm->pos_x_zero, x + mm->pos_y_zero, get_trgb(0, 255, 255, 255));
+			y--;
+		}
+		x++;
 	}
 }
 
