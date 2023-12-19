@@ -66,9 +66,7 @@ t_sprite	*ft_newsprite(char *content);
 void		init_win(t_game *game);
 void		put_square(t_image *img);
 int			get_trgb(int t, int r, int g, int b);
-void		bresenham(t_image *img, int x_start, int y_start, int x_dest, int y_dest);
 void		my_mlx_pixel_put(t_image *img, int x, int y, int color);
-void		draw_vertical_line(int x, int y_start, int y_end, int color, t_image *img);
 void		dda(t_game *game);
 int			render(t_game *game);
 void		draw_ground_ceiling(t_image *img, t_game *game);
@@ -83,5 +81,7 @@ void		draw_mm_space(t_game *game, t_minimap *mm, int length, int k);
 void		draw_textures(t_game *game, int x);
 void		set_wall_hit(t_game *game);
 void		get_x_tex(t_game *game);
+int			mouse_hook(t_game *game);
+void		mouse_movement(t_game *game);
 
 #endif

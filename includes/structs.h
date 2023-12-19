@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:44:26 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/14 12:37:54 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ typedef struct s_game
 	t_image		*img2;
 	int			win_height;
 	int			win_width;
-	int			x;
-	int			y;
+	int			mouse_x;
+	int			mouse_y;
 	int			exit_x;
 	int			exit_y;
 	int			ceiling_color;
