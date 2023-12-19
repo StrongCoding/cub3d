@@ -84,7 +84,7 @@ void				calc_distance_and_height(t_game *game);
 void				calc_stripe(t_game *game);
 int					my_mlx_pixel_get(t_image *img, int x, int y);
 void				minimap(t_game *game);
-void				draw_mm_player(t_game *game);
+void				draw_mm_player(t_game *game, t_minimap *mm);
 void				draw_mm_wall(t_game *game, t_minimap *mm, int k);
 void				draw_mm_space(t_game *game, t_minimap *mm, int k);
 void				draw_mm_door(t_game *game, t_minimap *mm, int k);
