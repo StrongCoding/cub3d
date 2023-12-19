@@ -58,6 +58,9 @@
 
 # define FRAME_ANIMATION_TIME	100
 
+# define ROT_SPEED 0.2
+# define MOVE_SPEED 0.3
+
 
 
 int			key_hook(int keycode, t_game *game);
@@ -91,7 +94,9 @@ void		get_x_tex(t_game *game);
 int			mouse_hook(t_game *game);
 void		mouse_movement(t_game *game);
 unsigned long long	get_time(void);
-void	print_fps(t_game *game);
-void	toggle(int *var);
+void				print_fps(t_game *game);
+void				toggle(int *var);
+int					view_left(t_game *game);
+int					view_right(t_game *game);
 
 #endif
