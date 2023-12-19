@@ -12,6 +12,7 @@ FILES 		=	main \
 				dda \
 				painting \
 				fps \
+				utils \
 				animation \
 				render_textures \
 				../parsing/map \

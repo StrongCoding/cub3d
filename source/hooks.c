@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:12:27 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 18:04:19 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 11:09:21 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,11 @@ int	key_hook(int keycode, t_game *game)
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
 		ft_move_down(game);
 	else if (keycode == KEY_SPACE)
-		if (game->door)
-			game->door = 0;
-		else
-			game->door = 1;
+		toggle(&game->door);
 	else if (keycode == KEY_F)
-		if (game->print_fps)
-			game->print_fps = 0;
-		else
-			game->print_fps = 1;
+		toggle(&game->print_fps);
 	else if (keycode == KEY_I)
-		if (game->animation)
-			game->animation = 0;
-		else
-			game->animation = 1;
+		toggle(&game->animation);
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
 		ft_move_left(game);
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
