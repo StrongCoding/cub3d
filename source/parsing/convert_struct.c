@@ -92,6 +92,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 		i++;
 	}
 	fill_dir(input, game);
+	free_identifier(input);
 	return (1);
 }
 
