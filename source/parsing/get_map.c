@@ -81,6 +81,7 @@ static char	**fill_map(t_input *input, char **file, int line)
 		line++;
 		row++;
 	}
+	free_array(file);
 	return (map);
 }
 
