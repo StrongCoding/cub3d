@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:12:27 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 14:25:38 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:10:36 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	printf("key_code: %i\n", keycode);
 	if (keycode == KEY_UP || keycode == KEY_W)
 		move_up(game);
 	else if (keycode == KEY_DOWN || keycode == KEY_S)

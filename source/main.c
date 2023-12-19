@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 17:04:53 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:20:43 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void	set_values(t_map *info, t_game *game, t_image *image1)
 	game->map = info->map;
 	game->ray->img = info->img;
 	game->ray->tex = info->textures;
-	printf("info->start_pos.start_row: %d info->start_pos.start_col: %d\n", info->start_pos.start_row, info->start_pos.start_col);
 	game->ray->pos_x = info->start_pos.start_row + 0.5;
 	game->ray->pos_y = info->start_pos.start_col + 0.5;
+	if (!SHOW_MOUSE)
+		mlx_mouse_hide(game->mlx, game->win);
 	mlx_mouse_move(game->mlx,
 		game->win, game->win_width / 2, game->win_height / 2);
 }
