@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:53:28 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/19 16:18:58 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 16:50:50 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	free_identifier(t_input *input)
 		free(input->we_texture);
 	if (input->ea_texture)
 		free(input->ea_texture);
-	if (input->fl_color)
-		free(input->fl_color);
-	if (input->ce_color)
-		free(input->ce_color);
+	// if (input->fl_color)
+	// 	free(input->fl_color);
+	// if (input->ce_color)
+	// 	free(input->ce_color);
 }
 
 void	free_sprites(t_sprite **sprite)
