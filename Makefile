@@ -15,6 +15,7 @@ FILES 		=	main \
 				fps \
 				utils \
 				animation \
+				view \
 				render_textures \
 				../parsing/map \
                 ../parsing/map_lengths \

@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 10:47:47 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 12:49:06 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,39 +58,44 @@
 
 # define FRAME_ANIMATION_TIME	100
 
+# define ROT_SPEED 0.2
+# define MOVE_SPEED 0.3
 
 
-int			key_hook(int keycode, t_game *game);
-int			key_hook_destroy(t_game *game);
-int			expose_hook(t_game *game);
-void		init_struct(t_game *game);
-int			ft_move_right(t_game *game);
-int			ft_move_left(t_game *game);
-int			ft_move_up(t_game *game);
-int			ft_move_down(t_game *game);
-t_sprite	*ft_newsprite(char *content);
-void		init_win(t_game *game);
-void		put_square(t_image *img);
-int			get_trgb(int t, int r, int g, int b);
-void		my_mlx_pixel_put(t_image *img, int x, int y, int color);
-void		dda(t_game *game);
-int			render(t_game *game);
-void		draw_ground_ceiling(t_image *img, t_game *game);
-void		init_image(t_game *game, t_image *img);
-void		calc_distance_and_height(t_game *game);
-void		calc_stripe(t_game *game);
-int			my_mlx_pixel_get(t_image *img, int x, int y);
-void		minimap(t_game *game);
-void		draw_mm_player(t_game *game);
-void		draw_mm_wall(t_game *game, t_minimap *mm, int length, int k);
-void		draw_mm_space(t_game *game, t_minimap *mm, int length, int k);
-void		draw_textures(t_game *game, int x);
-void		set_wall_hit(t_game *game);
-void		get_x_tex(t_game *game);
-int			mouse_hook(t_game *game);
-void		mouse_movement(t_game *game);
+
+int					key_hook(int keycode, t_game *game);
+int					key_hook_destroy(t_game *game);
+int					expose_hook(t_game *game);
+void				init_struct(t_game *game);
+int					move_right(t_game *game);
+int					move_left(t_game *game);
+int					move_up(t_game *game);
+int					move_down(t_game *game);
+t_sprite			*ft_newsprite(char *content);
+void				init_win(t_game *game);
+void				put_square(t_image *img);
+int					get_trgb(int t, int r, int g, int b);
+void				my_mlx_pixel_put(t_image *img, int x, int y, int color);
+void				dda(t_game *game);
+int					render(t_game *game);
+void				draw_ground_ceiling(t_image *img, t_game *game);
+void				init_image(t_game *game, t_image *img);
+void				calc_distance_and_height(t_game *game);
+void				calc_stripe(t_game *game);
+int					my_mlx_pixel_get(t_image *img, int x, int y);
+void				minimap(t_game *game);
+void				draw_mm_player(t_game *game);
+void				draw_mm_wall(t_game *game, t_minimap *mm, int length, int k);
+void				draw_mm_space(t_game *game, t_minimap *mm, int length, int k);
+void				draw_textures(t_game *game, int x);
+void				set_wall_hit(t_game *game);
+void				get_x_tex(t_game *game);
+int					mouse_hook(t_game *game);
+void				mouse_movement(t_game *game);
 unsigned long long	get_time(void);
-void	print_fps(t_game *game);
-void	toggle(int *var);
+void				print_fps(t_game *game);
+void				toggle(int *var);
+int					view_left(t_game *game);
+int					view_right(t_game *game);
 
 #endif
