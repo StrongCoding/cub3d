@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nschutz <nschutz@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 09:37:45 by nschutz           #+#    #+#             */
-/*   Updated: 2023/07/27 09:40:04 by nschutz          ###   ########.fr       */
+/*   Updated: 2023/12/19 16:17:27 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ static void	get_file(int fd, t_input *input, char *name)
 		line++;
 	}
 	fill_input(input, map, length);
-	if (!input->exit)
-		return ;
 }
 
 t_input	read_map(char *name)
