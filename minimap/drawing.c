@@ -46,7 +46,7 @@ static void	draw_square(int x, int y, int color, t_game *game)
 	int 	rotated_y;
 	double	angle;
 
-	angle = 45 * M_PI / 180.0;
+	angle = 0 * M_PI / 180.0;
 	i = 0;
 	while (i < MAP_WALL)
 	{
