@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 19:42:51 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 10:40:43 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:32:58 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,12 @@ void	set_steps(t_game *game)
 	}
 }
 
-int	render(t_game *game)
+void	raycasting(t_game *game)
 {
 	int	x;
 
-	draw_ground_ceiling(game->img1, game);
-	x = 0;
-	mouse_movement(game);
-	while (x < game->win_width)
+	x = -1;
+	while (++x < game->win_width)
 	{
 		calc_ray_position_direction(game, x);
 		game->ray->map_x = (int)game->ray->pos_x;
@@ -86,15 +84,17 @@ int	render(t_game *game)
 		set_wall_hit(game);
 		get_x_tex(game);
 		draw_textures(game, x);
-		x++;
 	}
-	// printf("dir_x: %f, dir_y: %f, plane_x: %f, plane_y: %f\n", game->ray->dir_x, game->ray->dir_y, game->ray->plane_x, game->ray->plane_y);
-	// printf("time: %llu\n", get_time() - game->time);
-	// printf("get_time: %llu\n", get_time());
+}
+
+int	render(t_game *game)
+{
+	draw_ground_ceiling(game->img1, game);
+	mouse_movement(game);
+	raycasting(game);
 	minimap(game);
 	mlx_put_image_to_window(game->mlx, game->win,
 		game->img1->img, 0, 0);
 	print_fps(game);
-	usleep(1000);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 13:14:27 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:03:38 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@
 # define ROT_SPEED 0.2
 # define MOVE_SPEED 0.3
 
-
-
 int					key_hook(int keycode, t_game *game);
 int					key_hook_destroy(t_game *game);
 int					expose_hook(t_game *game);
@@ -98,5 +96,6 @@ void				print_fps(t_game *game);
 void				toggle(int *var);
 int					view_left(t_game *game);
 int					view_right(t_game *game);
+void				end_program(t_game *game);
 
 #endif

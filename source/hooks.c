@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:12:27 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 12:56:03 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:25:38 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,20 @@ int	key_hook(int keycode, t_game *game)
 	else if (keycode == KEY_RIGHT)
 		view_right(game);
 	else if (keycode == KEY_ESC)
-	{
-		// ft_close_programm(init);
-		exit(0);
-	}
+		end_program(game);
 	return (0);
 }
 
 int	key_hook_destroy(t_game *game)
 {
-	// ft_close_programm(init);
-	printf("exiting!\n");
-	exit(0);
+	end_program(game);
 	return (1);
 }
 
 //triggering after minimizing, so screen is not black
-int	expose_hook(t_game *game)
-{
-	printf("exposing!\n");
-	// ft_render_map(init->map, init);
-	return (1);
-}
+// int	expose_hook(t_game *game)
+// {
+// 	printf("exposing!\n");
+// 	// ft_render_map(init->map, init);
+// 	return (1);
+// }

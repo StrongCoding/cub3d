@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:40:09 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 14:34:34 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:24:11 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	closer_to_x(t_game *game)
+{
+	game->ray->side_dist_x += game->ray->delta_dist_x;
+	game->ray->map_x += game->ray->step_x;
+	game->ray->side = 0;
+	if (game->ray->ray_dir_x < 0)
+		game->ray->direction = 2;
+	else
+		game->ray->direction = 3;
+}
+
+void	closer_to_y(t_game *game)
+{
+	game->ray->side_dist_y += game->ray->delta_dist_y;
+	game->ray->map_y += game->ray->step_y;
+	game->ray->side = 1;
+	if (game->ray->ray_dir_y < 0)
+		game->ray->direction = 0;
+	else
+		game->ray->direction = 1;
+}
 
 // calculates lowest and highest pixel to fill in current stripe
 void	calc_stripe(t_game *game)
@@ -45,25 +67,9 @@ void	dda(t_game *game)
 	while (hit == 0)
 	{
 		if (game->ray->side_dist_x < game->ray->side_dist_y)
-		{
-			game->ray->side_dist_x += game->ray->delta_dist_x;
-			game->ray->map_x += game->ray->step_x;
-			game->ray->side = 0;
-			if (game->ray->ray_dir_x < 0)
-				game->ray->direction = 2;
-			else
-				game->ray->direction = 3;
-		}
+			closer_to_x(game);
 		else
-		{
-			game->ray->side_dist_y += game->ray->delta_dist_y;
-			game->ray->map_y += game->ray->step_y;
-			game->ray->side = 1;
-			if (game->ray->ray_dir_y < 0)
-				game->ray->direction = 0;
-			else
-				game->ray->direction = 1;
-		}
+			closer_to_y(game);
 		if (game->map[game->ray->map_x][game->ray->map_y] == '1')
 			hit = 1;
 		if (game->map[game->ray->map_x][game->ray->map_y] > '1' && game->door)
@@ -71,6 +77,5 @@ void	dda(t_game *game)
 			game->ray->direction = 4;
 			hit = 1;
 		}
-			
 	}
 }

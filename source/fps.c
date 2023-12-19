@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fps.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnebatz <dnebatz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:18:40 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/14 17:53:52 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:44:19 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ void	print_fps(t_game *game)
 {
 	char	*fps_string;
 	char	*tmp;
-	
+
 	if (game->print_fps == 1)
 	{
 		tmp = ft_itoa(game->fps);
 		fps_string = ft_strjoin("fps: ", tmp);
 		free(tmp);
-		mlx_string_put(game->mlx, game->win, WIN_WIDTH - 80, 20, get_trgb(0, 0, 0, 0), fps_string);
+		mlx_string_put(game->mlx, game->win,
+			WIN_WIDTH - 80, 20, get_trgb(0, 0, 0, 0), fps_string);
 		free(fps_string);
 	}
 	game->fps = 10000 / (int)(get_time() - game->time);

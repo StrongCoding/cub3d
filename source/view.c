@@ -6,12 +6,11 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:26:12 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 12:50:17 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:27:44 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 // rotation camera plane and and direction
 int	view_left(t_game *game)

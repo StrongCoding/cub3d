@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:44:26 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:04:01 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,42 +68,40 @@ typedef struct s_raycasting
 
 typedef struct s_game
 {
-	void		*mlx;
-	void		*win;
-	t_image		*img1;
-	t_image		*img2;
-	int			win_height;
-	int			win_width;
-	int			mouse_x;
-	int			mouse_y;
-	int			exit_x;
-	int			exit_y;
-	int			ceiling_color;
-	int			floor_color;
-	int			door;
-	char		**map;
-	char		**map_copy;
-	int			error;
-	int			movements;
-	int			frame;
-	int			end;
-	t_raycasting	*ray;
-	unsigned long long			time;
-	int		fps;
-	int		print_fps;
-	int		animation;
+	void				*mlx;
+	void				*win;
+	t_image				*img1;
+	t_image				*img2;
+	int					win_height;
+	int					win_width;
+	int					mouse_x;
+	int					mouse_y;
+	int					exit_x;
+	int					exit_y;
+	int					ceiling_color;
+	int					floor_color;
+	int					door;
+	char				**map;
+	char				**map_copy;
+	int					error;
+	int					movements;
+	int					frame;
+	int					end;
+	t_raycasting		*ray;
+	unsigned long long	time;
+	int					fps;
+	int					print_fps;
+	int					animation;
 }				t_game;
 
 typedef struct s_start
 {
 	int		count_rows;
-	int 	count_cols;
+	int		count_cols;
 	char	start_dir;
-	int 	start_row;
-	int 	start_col;
+	int		start_row;
+	int		start_col;
 }				t_start;
-
-
 typedef struct s_color
 {
 	int	r;
@@ -111,41 +109,40 @@ typedef struct s_color
 	int	b;
 }				t_color;
 
-typedef	struct s_map
+typedef struct s_map
 {
 	t_sprite	**textures;
 	t_image		**img;
 	t_color		fl_color;
 	t_color		ce_color;
-	char 		**map;
+	char		**map;
 	t_start		start_pos;
 }				t_map;
-
 
 typedef struct s_input
 {
 	char	*no_texture;
-	char 	*so_texture;
-	char 	*we_texture;
-	char 	*ea_texture;
-	int 	*fl_color;
-	int 	fl;
-	int 	*ce_color;
-	int 	ce;
-	char 	**map;
+	char	*so_texture;
+	char	*we_texture;
+	char	*ea_texture;
+	int		*fl_color;
+	int		fl;
+	int		*ce_color;
+	int		ce;
+	char	**map;
 	t_start	info;
-	int 	exit;
+	int		exit;
 }				t_input;
 
 typedef struct s_minimap
 {
 	char	**map;
-	int 	count_w;
-	int 	count_h;
-	int 	pos_w;
-	int 	pos_h;
-	int 	pos_x_zero;
-	int 	pos_y_zero;
-	int 	length;
+	int		count_w;
+	int		count_h;
+	int		pos_w;
+	int		pos_h;
+	int		pos_x_zero;
+	int		pos_y_zero;
+	int		length;
 }				t_minimap;
 #endif
