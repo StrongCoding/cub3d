@@ -146,5 +146,6 @@ typedef struct s_minimap
 	int 	pos_h;
 	int 	pos_x_zero;
 	int 	pos_y_zero;
+	int 	length;
 }				t_minimap;
 #endif

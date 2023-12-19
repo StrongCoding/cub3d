@@ -14,7 +14,6 @@
 
 void	mouse_movement(t_game *game)
 {
-	printf("mouse x: %d\n", game->mouse_x);
 	mlx_mouse_get_pos(game->mlx, game->win, &game->mouse_x, &game->mouse_y);
 	mlx_mouse_hide(game->mlx, game->win);
 	if (game->mouse_x < game->win_width / 2)

@@ -63,7 +63,7 @@ static void	draw_square(int x, int y, int color, t_game *game)
 	}
 }
 
-void	draw_mm_wall(t_game *game, t_minimap *mm, int length, int k)
+void	draw_mm_wall(t_game *game, t_minimap *mm, int k)
 {
 	int	i;
 	int	j;
@@ -80,7 +80,7 @@ void	draw_mm_wall(t_game *game, t_minimap *mm, int length, int k)
 		{
 			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
 			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
-			(int)(int)game->ray->pos_x + k < length && \
+			(int)(int)game->ray->pos_x + k < mm->length && \
 			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
 			== '1')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
@@ -92,7 +92,7 @@ void	draw_mm_wall(t_game *game, t_minimap *mm, int length, int k)
 	game->img2 = NULL;
 }
 
-void	draw_mm_space(t_game *game, t_minimap *mm, int length, int k)
+void	draw_mm_door(t_game *game, t_minimap *mm, int k)
 {
 	int	i;
 	int	j;
@@ -100,7 +100,10 @@ void	draw_mm_space(t_game *game, t_minimap *mm, int length, int k)
 	int	color;
 
 	j = 0;
-	color = get_trgb(0, 30, 25, 255);
+	if (!game->door)
+		color = get_trgb(0, 30, 190, 190);
+	else
+		color = get_trgb(0, 200, 0, 0);
 	while (k < mm->count_h / 2)
 	{
 		i = 0;
@@ -109,7 +112,36 @@ void	draw_mm_space(t_game *game, t_minimap *mm, int length, int k)
 		{
 			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
 			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
-			(int)(int)game->ray->pos_x + k < length && \
+			(int)(int)game->ray->pos_x + k < mm->length && \
+			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
+			== '2')
+				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
+			i++;
+		}
+		k++;
+		j++;
+	}
+	game->img2 = NULL;
+}
+
+void	draw_mm_space(t_game *game, t_minimap *mm, int k)
+{
+	int	i;
+	int	j;
+	int	num;
+	int	color;
+
+	j = 0;
+	color = get_trgb(0, 80, 25, 255);
+	while (k < mm->count_h / 2)
+	{
+		i = 0;
+		num = mm->count_w / 2 * -1 - 1;
+		while (++num < mm->count_w / 2)
+		{
+			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
+			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
+			(int)(int)game->ray->pos_x + k < mm->length && \
 			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
 			== '0')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
