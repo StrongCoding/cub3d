@@ -42,8 +42,8 @@ static void	draw_square(int x, int y, int color, t_game *game)
 {
 	int		i;
 	int		j;
-	int 	rotated_x;
-	int 	rotated_y;
+	int		rotated_x;
+	int		rotated_y;
 	double	angle;
 
 	angle = 0 * M_PI / 180.0;
@@ -53,9 +53,12 @@ static void	draw_square(int x, int y, int color, t_game *game)
 		j = 0;
 		while (j < MAP_WALL)
 		{
-			rotated_x = (int)((i - MAP_WALL / 2) * cos(angle) - (j - MAP_WALL / 2) * sin(angle) + x + MAP_WALL / 2);
-			rotated_y = (int)((i - MAP_WALL / 2) * sin(angle) + (j - MAP_WALL / 2) * cos(angle) + y + MAP_WALL / 2);
-			if (rotated_x >= 0 && rotated_x < WIN_WIDTH / 6 && rotated_y >= 0 && rotated_y <= WIN_HEIGHT / 6)
+			rotated_x = (int)((i - MAP_WALL / 2) * cos(angle) - \
+			(j - MAP_WALL / 2) * sin(angle) + x + MAP_WALL / 2);
+			rotated_y = (int)((i - MAP_WALL / 2) * sin(angle) + \
+			(j - MAP_WALL / 2) * cos(angle) + y + MAP_WALL / 2);
+			if (rotated_x >= 0 && rotated_x < WIN_WIDTH / 6 && \
+				rotated_y >= 0 && rotated_y <= WIN_HEIGHT / 6)
 				my_mlx_pixel_put(game->img1, rotated_x, rotated_y, color);
 			j++;
 		}
@@ -89,7 +92,6 @@ void	draw_mm_wall(t_game *game, t_minimap *mm, int k)
 		k++;
 		j++;
 	}
-	game->img2 = NULL;
 }
 
 void	draw_mm_door(t_game *game, t_minimap *mm, int k)
@@ -100,10 +102,9 @@ void	draw_mm_door(t_game *game, t_minimap *mm, int k)
 	int	color;
 
 	j = 0;
+	color = get_trgb(0, 200, 0, 0);
 	if (!game->door)
 		color = get_trgb(0, 30, 190, 190);
-	else
-		color = get_trgb(0, 200, 0, 0);
 	while (k < mm->count_h / 2)
 	{
 		i = 0;
@@ -121,7 +122,6 @@ void	draw_mm_door(t_game *game, t_minimap *mm, int k)
 		k++;
 		j++;
 	}
-	game->img2 = NULL;
 }
 
 void	draw_mm_space(t_game *game, t_minimap *mm, int k)
@@ -150,5 +150,4 @@ void	draw_mm_space(t_game *game, t_minimap *mm, int k)
 		k++;
 		j++;
 	}
-	game->img2 = NULL;
 }
