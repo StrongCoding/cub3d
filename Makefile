@@ -18,16 +18,16 @@ FILES 		=	main \
 				view \
 				end \
 				render_textures \
-				../parsing/map \
-                ../parsing/map_lengths \
-                ../parsing/get_identifier \
-                ../parsing/get_colors \
-                ../parsing/get_map \
-                ../parsing/map_check \
-                ../parsing/convert_struct \
-                ../parsing/free \
-                ../minimap/minimap \
-                ../minimap/drawing
+				parsing/map \
+                parsing/map_lengths \
+                parsing/get_identifier \
+                parsing/get_colors \
+                parsing/get_map \
+                parsing/map_check \
+                parsing/convert_struct \
+                parsing/free \
+                minimap/minimap \
+                minimap/drawing
 
 SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
 OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
@@ -59,6 +59,8 @@ $(LIBFT):
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)/parsing
+	mkdir -p $(OBJ_DIR)/minimap
 	cc $(FLAGS) $(INC) -o $@ -c $<
 
 clean:

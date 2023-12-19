@@ -6,14 +6,14 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/19 14:04:01 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:51:47 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include "../parsing/cub2d.h"
+# include "cub2d.h"
 # include "cub3d.h"
 
 typedef struct s_sprite

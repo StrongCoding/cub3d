@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 14:03:38 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:51:35 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../minilibx-linux/mlx.h"
 # include "../ft_printf/ft_printf.h"
-# include "../parsing/cub2d.h"
+# include "cub2d.h"
 # include "structs.h"
 # include <stdlib.h>
 # include <X11/keysym.h>
