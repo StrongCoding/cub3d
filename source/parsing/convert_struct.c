@@ -92,7 +92,6 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 		i++;
 	}
 	fill_dir(input, game);
-	free_identifier(input);
 	return (1);
 }
 
@@ -108,5 +107,6 @@ int	convert_struct(t_input *input, t_map *map, t_game *game)
 	map->ce_color.b = input->ce_color[2];
 	map->map = input->map;
 	map->start_pos = input->info;
+	free_identifier(input);
 	return (1);
 }
