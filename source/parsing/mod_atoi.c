@@ -24,7 +24,7 @@ int	mod_atoi(const char *str)
 	count_minus = 0;
 	number = 0;
 	if (!str[0])
-		return (0);
+		return (-1);
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str [i] == '+')
