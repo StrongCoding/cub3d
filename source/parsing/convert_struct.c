@@ -103,11 +103,9 @@ int	convert_struct(t_input *input, t_map *map, t_game *game)
 	map->fl_color.r = input->fl_color[0];
 	map->fl_color.g = input->fl_color[1];
 	map->fl_color.b = input->fl_color[2];
-	free(input->fl_color);
 	map->ce_color.r = input->ce_color[0];
 	map->ce_color.g = input->ce_color[1];
 	map->ce_color.b = input->ce_color[2];
-	free(input->ce_color);
 	map->map = input->map;
 	map->start_pos = input->info;
 	return (1);
