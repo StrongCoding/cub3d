@@ -24,11 +24,7 @@ static void	fill_image(t_map *map, t_input *input, t_game *game, int count)
 
 static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 {
-	int	fd;
-
-	fd = open(input->we_texture, O_RDONLY);
-	ft_printf("fd 1\n");
-	if (fd == -1)
+	if (!file_check(count, input))
 		return (free_identifier(input), 0);
 	if (count == 0)
 		map->textures[count] = ft_newsprite(input->we_texture);
@@ -40,14 +36,12 @@ static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		map->textures[count] = ft_newsprite(input->so_texture);
 	else if (count == 4)
 		map->textures[count] = ft_newsprite("sprites/door.xpm");
-	ft_printf("calloc tex %i\n", count);
-	if (!map->textures[0])
+	if (!map->textures[count])
 		return (free_identifier(input), 0);
 	map->img[count] = ft_calloc (1, sizeof(t_image));
 	if (!map->img[count])
-		return (free_identifier(input), 0);
+		return (free_identifier(input), free_sprites(&map->textures[count]), 0);
 	fill_image(map, input, game, count);
-	close (fd);
 	return (1);
 }
 
@@ -82,13 +76,16 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	i = 0;
 	map->textures = ft_calloc(6, sizeof(t_sprite *));
 	map->img = ft_calloc(6, sizeof(t_image *));
-	ft_printf("calloc double pointer\n");
 	if (!map->textures)
-		return (free_identifier(input), 0);
+		return (free_identifier(input), free(map->textures), free(map->img), 0);
 	while (i < 5)
 	{
 		if (!fill_struct(map, input, game, i))
-			return (0);
+		{
+			while (--i >= 0)
+				free_sprites(&map->textures[i]);
+			return (free(map->textures), free(map->img), free_identifier(input), 0);
+		}
 		i++;
 	}
 	fill_dir(input, game);

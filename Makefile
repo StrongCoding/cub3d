@@ -25,6 +25,7 @@ FILES 		=	main \
                 parsing/get_map \
                 parsing/map_check \
                 parsing/convert_struct \
+                parsing/file_check \
                 parsing/free \
                 minimap/minimap \
                 minimap/drawing

@@ -29,6 +29,7 @@ char		**get_map(t_input *input, char **file, int line);
 int			check_map(char **file, int row, int col, int *s_bool);
 int			valid_char(char c);
 int			convert_struct(t_input *input, t_map *map, t_game *game);
+int			file_check(int count, t_input *input);
 void		free_array(char **array);
 void		free_identifier(t_input *input);
 void		free_sprites(t_sprite **sprite);
