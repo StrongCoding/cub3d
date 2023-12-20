@@ -40,7 +40,7 @@ static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		return (free_identifier(input), 0);
 	map->img[count] = ft_calloc (1, sizeof(t_image));
 	if (!map->img[count])
-		return (free_identifier(input), free_sprites(&map->textures[count]), 0);
+		return (free_identifier(input), 0);
 	fill_image(map, input, game, count);
 	return (1);
 }
@@ -81,11 +81,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	while (i < 5)
 	{
 		if (!fill_struct(map, input, game, i))
-		{
-			while (--i >= 0)
-				free_sprites(&map->textures[i]);
-			return (free(map->textures), free(map->img), free_identifier(input), 0);
-		}
+			return (free_sprites(map->textures), free(map->img), 0);
 		i++;
 	}
 	fill_dir(input, game);
