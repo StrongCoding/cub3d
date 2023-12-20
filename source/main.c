@@ -61,7 +61,8 @@ int	main(int argc, char **argv)
 	game.ray = &ray;
 	init_win(&game);
 	if (!convert_struct(&input, &info, &game))
-		return (failed_convert(&game, &info), ft_printf("Error\nInvalid textures"));
+		return (failed_convert(&game, &info), \
+		ft_printf("Error\nInvalid textures"));
 	init_image(&game, &image1);
 	set_values(&info, &game, &image1);
 	if (!(game.error))
