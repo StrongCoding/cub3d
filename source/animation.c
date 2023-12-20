@@ -6,12 +6,11 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:49:09 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/20 10:38:42 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/20 10:49:14 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 void	change_noah(t_game *game, int time_diff)
 {

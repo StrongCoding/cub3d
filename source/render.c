@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 19:42:51 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/20 10:26:05 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/20 10:49:46 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	raycasting(t_game *game)
 		calc_distance_and_height(game);
 		calc_stripe(game);
 		set_wall_hit(game);
-		// if (game->ray->direction == 1)
 		change_frame(game);
 		get_x_tex(game);
 		draw_textures(game, x);
