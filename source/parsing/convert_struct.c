@@ -87,9 +87,11 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 
 	i = 0;
 	map->textures = ft_calloc(12, sizeof(t_sprite *));
-	map->img = ft_calloc(12, sizeof(t_image *));
 	if (!map->textures)
 		return (free_identifier(input), 0);
+	map->img = ft_calloc(12, sizeof(t_image *));
+	if (!map->img)
+		return (free_identifier(input), free(map->textures), 0);
 	while (i < 11)
 	{
 		if (!fill_struct(map, input, game, i))
