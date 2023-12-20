@@ -33,9 +33,9 @@ SRCS 		= 	$(addsuffix .c, $(addprefix $(SRC_DIR)/, $(FILES)))
 OBJS 		= 	$(addsuffix .o, $(addprefix $(OBJ_DIR)/, $(FILES)))
 
 NAME		=	cub3D
-#FLAGS		=	-Wall -Werror -Wextra -g
+LAGS		=	-Wall -Werror -Wextra -g
 #FLAGS		=	-g
-FLAGS		= 	-g -fsanitize=address
+#FLAGS		= 	-g -fsanitize=address
 #FLAGS		= 	-g -fsanitize=memory
 MLX_FLAGS	=	-L/usr/X11/lib -lX11 -lXext -lm
 INC			=	-I $(INC_DIR) -I $(LIBFT_DIR) -I $(MLX_DIR) -I /usr/X11/include
