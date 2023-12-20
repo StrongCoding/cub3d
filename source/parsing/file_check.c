@@ -14,7 +14,7 @@
 
 int	file_check(int count, t_input *input)
 {
-	int fd;
+	int	fd;
 
 	if (count == 0)
 		fd = open(input->we_texture, O_RDONLY);

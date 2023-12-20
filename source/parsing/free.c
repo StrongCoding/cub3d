@@ -37,9 +37,9 @@ void	free_identifier(t_input *input)
 	if (input->ea_texture)
 		free(input->ea_texture);
 	if (input->fl_color)
-	 	free(input->fl_color);
+		free(input->fl_color);
 	if (input->ce_color)
-	 	free(input->ce_color);
+		free(input->ce_color);
 }
 
 void	free_sprites(t_sprite **sprite)
