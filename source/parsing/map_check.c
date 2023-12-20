@@ -52,7 +52,7 @@ static int	check_two(char **file, int row, int col)
 	file[row][col + 1] == '2') && row > 0 && file[row + 1] && \
 	file[row - 1][col] == '1' && file[row + 1][col] == '1')
 		return (1);
-	else if (col > 0 && (valid_char(file[row - 1][col]) == 2 || \
+	else if (row > 0 && (valid_char(file[row - 1][col]) == 2 || \
 	file[row - 1][col] == '0' || file[row - 1][col] == '2') && \
 	valid_char(file[row + 1][col]) && (valid_char(file[row + 1][col]) == 2 \
 	|| file[row + 1][col] == '0' || file[row + 1][col] == '2') && row > 0 && \
