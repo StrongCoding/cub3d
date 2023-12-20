@@ -85,8 +85,8 @@ void	draw_mm_wall(t_game *game, t_minimap *mm, int k)
 		while (++num < mm->count_w / 2)
 		{
 			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
-			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
-			(int)(int)game->ray->pos_x + k < mm->length && \
+			>= 0 && (int)game->ray->pos_y + num <= (int)ft_strlen(game->map[0]) \
+			&& (int)game->ray->pos_x + k < mm->length && \
 			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
 			== '1')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
@@ -115,8 +115,8 @@ void	draw_mm_door(t_game *game, t_minimap *mm, int k)
 		while (++num < mm->count_w / 2)
 		{
 			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
-			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
-			(int)(int)game->ray->pos_x + k < mm->length && \
+			>= 0 && (int)game->ray->pos_y + num <= (int)ft_strlen(game->map[0]) \
+			&& (int)game->ray->pos_x + k < mm->length && \
 			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
 			== '2')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
@@ -142,8 +142,8 @@ void	draw_mm_space(t_game *game, t_minimap *mm, int k)
 		while (++num < mm->count_w / 2)
 		{
 			if ((int)game->ray->pos_y + num >= 0 && (int)game->ray->pos_x + k \
-			>= 0 && (int)game->ray->pos_y + num <= ft_strlen(game->map[0]) && \
-			(int)(int)game->ray->pos_x + k < mm->length && \
+			>= 0 && (int)game->ray->pos_y + num <= (int)ft_strlen(game->map[0]) \
+			&& (int)game->ray->pos_x + k < mm->length && \
 			game->map[(int)game->ray->pos_x + k][(int)game->ray->pos_y + num] \
 			== '0')
 				draw_square((MAP_WALL * i), (MAP_WALL * j), color, game);
