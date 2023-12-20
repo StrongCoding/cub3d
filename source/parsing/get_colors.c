@@ -23,6 +23,28 @@ static int	pos_num(char *s, int *j)
 	return (i);
 }
 
+static int	ce_colors_two(t_input *input, char *map, int j)
+{
+	char	*tmp;
+
+	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
+	if (!tmp)
+		return (0);
+	input->ce_color[1] = mod_atoi(tmp);
+	free(tmp);
+	if (input->ce_color[1] < 0 || input->ce_color[1] > 255)
+		return (0);
+	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
+	if (!tmp)
+		return (0);
+	input->ce_color[2] = mod_atoi(tmp);
+	free(tmp);
+	if (input->ce_color[2] < 0 || input->ce_color[2] > 255)
+		return (0);
+	input->ce = 1;
+	return (1);
+}
+
 int	ce_colors(t_input *input, char *map)
 {
 	char	*tmp;
@@ -45,21 +67,28 @@ int	ce_colors(t_input *input, char *map)
 	free(tmp);
 	if (input->ce_color[0] < 0 || input->ce_color[0] > 255)
 		return (0);
+	return (ce_colors_two(input, map, j));
+}
+
+static int	fl_colors_two(t_input *input, char *map, int j)
+{
+	char	*tmp;
+
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->ce_color[1] = mod_atoi(tmp);
+	input->fl_color[1] = mod_atoi(tmp);
 	free(tmp);
-	if (input->ce_color[1] < 0 || input->ce_color[1] > 255)
+	if (input->fl_color[1] < 0 || input->fl_color[1] > 255)
 		return (0);
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->ce_color[2] = mod_atoi(tmp);
+	input->fl_color[2] = mod_atoi(tmp);
 	free(tmp);
-	if (input->ce_color[2] < 0 || input->ce_color[2] > 255)
+	if (input->fl_color[2] < 0 || input->fl_color[2] > 255)
 		return (0);
-	input->ce = 1;
+	input->fl = 1;
 	return (1);
 }
 
@@ -83,20 +112,5 @@ int	fl_colors(t_input *input, char *map)
 	free(tmp);
 	if (input->fl_color[0] < 0 || input->fl_color[0] > 255)
 		return (0);
-	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->fl_color[1] = mod_atoi(tmp);
-	free(tmp);
-	if (input->fl_color[1] < 0 || input->fl_color[1] > 255)
-		return (0);
-	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->fl_color[2] = mod_atoi(tmp);
-	free(tmp);
-	if (input->fl_color[2] < 0 || input->fl_color[2] > 255)
-		return (0);
-	input->fl = 1;
-	return (1);
+	return (fl_colors_two(input, map, j));
 }
