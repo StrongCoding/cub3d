@@ -57,7 +57,6 @@ int	ce_colors(t_input *input, char *map)
 	{
 		if (!ft_isdigit(map[j]) && map[j] != ',')
 			return (0);
-		j++;
 	}
 	j = 2;
 	tmp = ft_substr(map, 2, pos_num(&map[j], &j));
@@ -102,7 +101,6 @@ int	fl_colors(t_input *input, char *map)
 	{
 		if (!ft_isdigit(map[j]) && map[j] != ',' && map[j] != ' ')
 			return (0);
-		j++;
 	}
 	j = 2;
 	tmp = ft_substr(map, j, pos_num(&map[2], &j));
