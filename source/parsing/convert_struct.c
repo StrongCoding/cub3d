@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:39:27 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:10:51 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/20 10:34:03 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		map->textures[count] = ft_newsprite(input->so_texture);
 	else if (count == 4)
 		map->textures[count] = ft_newsprite("sprites/door.xpm");
+	else if (count == 5)
+		map->textures[count] = ft_newsprite("sprites/baum1.xpm");
+	else if (count == 6)
+		map->textures[count] = ft_newsprite("sprites/baum2.xpm");
+	else if (count == 7)
+		map->textures[count] = ft_newsprite("sprites/baum3.xpm");
+	else if (count == 8)
+		map->textures[count] = ft_newsprite("sprites/baum4.xpm");
+	else if (count == 9)
+		map->textures[count] = ft_newsprite("sprites/noah1.xpm");
+	else if (count == 10)
+		map->textures[count] = ft_newsprite("sprites/noah2.xpm");
 	if (!map->textures[count])
 		return (free_identifier(input), 0);
 	map->img[count] = ft_calloc (1, sizeof(t_image));
@@ -74,11 +86,13 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	int	i;
 
 	i = 0;
-	map->textures = ft_calloc(6, sizeof(t_sprite *));
-	map->img = ft_calloc(6, sizeof(t_image *));
+	map->textures = ft_calloc(12, sizeof(t_sprite *));
 	if (!map->textures)
-		return (free_identifier(input), free(map->textures), free(map->img), 0);
-	while (i < 5)
+		return (free_identifier(input), 0);
+	map->img = ft_calloc(12, sizeof(t_image *));
+	if (!map->img)
+		return (free_identifier(input), free(map->textures), 0);
+	while (i < 11)
 	{
 		if (!fill_struct(map, input, game, i))
 			return (free_sprites(map->textures), free(map->img), 0);
