@@ -8,7 +8,6 @@ FILES 		=	main \
 				init \
 				sprite \
 				render \
-				bresenham \
 				dda \
 				painting \
 				mouse \
