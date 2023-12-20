@@ -38,3 +38,12 @@ void	end_program(t_game *game)
 	free(game->mlx);
 	exit(0);
 }
+
+void	failed_convert(t_game *game, t_map *map)
+{
+	free_array(map->map);
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(0);
+}

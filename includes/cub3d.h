@@ -65,7 +65,6 @@
 
 int					key_hook(int keycode, t_game *game);
 int					key_hook_destroy(t_game *game);
-int					expose_hook(t_game *game);
 void				init_struct(t_game *game);
 int					move_right(t_game *game);
 int					move_left(t_game *game);
@@ -73,7 +72,6 @@ int					move_up(t_game *game);
 int					move_down(t_game *game);
 t_sprite			*ft_newsprite(char *content);
 void				init_win(t_game *game);
-void				put_square(t_image *img);
 int					get_trgb(int t, int r, int g, int b);
 void				my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void				dda(t_game *game);
@@ -91,7 +89,6 @@ void				draw_mm_door(t_game *game, t_minimap *mm, int k);
 void				draw_textures(t_game *game, int x);
 void				set_wall_hit(t_game *game);
 void				get_x_tex(t_game *game);
-int					mouse_hook(t_game *game);
 void				mouse_movement(t_game *game);
 unsigned long long	get_time(void);
 void				print_fps(t_game *game);
@@ -99,6 +96,7 @@ void				toggle(int *var);
 int					view_left(t_game *game);
 int					view_right(t_game *game);
 void				end_program(t_game *game);
+void				failed_convert(t_game *game, t_map *map);
 void				change_frame(t_game *game);
 
 #endif

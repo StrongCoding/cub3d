@@ -90,7 +90,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	while (i < 11)
 	{
 		if (!fill_struct(map, input, game, i))
-			return (free_sprites(map->textures), free(map->img), 0);
+			return (free_image(map, game), 0);
 		i++;
 	}
 	fill_dir(input, game);

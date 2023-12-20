@@ -34,5 +34,6 @@ void		fill_image(t_map *map, t_game *game, int count);
 void		free_array(char **array);
 void		free_identifier(t_input *input);
 void		free_sprites(t_sprite **sprite);
+void		free_image(t_map *map, t_game *game);
 
 #endif

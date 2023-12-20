@@ -50,7 +50,7 @@ static void	fill_input(t_input *input, char **map, int length)
 	if (s_bool == 0 || !input->exit)
 	{
 		input->exit = 0;
-		return (free_identifier(input), free_array(map));
+		return (free_identifier(input), free_array(input->map));
 	}
 }
 

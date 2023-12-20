@@ -54,3 +54,19 @@ void	free_sprites(t_sprite **sprite)
 	}
 	free(sprite);
 }
+
+void	free_image(t_map *map, t_game *game)
+{
+	int	i;
+
+	i = -1;
+	mlx_destroy_image(game->mlx, game->img1->img);
+	while (map->textures[++i])
+	{
+		mlx_destroy_image(game->mlx, map->textures[i]->img);
+		free(map->textures[i]);
+		free(map->img[i]);
+	}
+	free(map->textures);
+	free(map->img);
+}
