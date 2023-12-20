@@ -12,14 +12,15 @@
 
 #include "cub2d.h"
 
-static void	fill_image(t_map *map, t_input *input, t_game *game, int count)
+static int	fill_struct_two(t_map *map, t_input *input, t_game *game, int count)
 {
-	map->textures[count]->img = mlx_xpm_file_to_image(game->mlx, \
-	map->textures[count]->relative_path, &map->textures[count]->width, \
-	&map->textures[count]->height);
-	map->img[count]->addr = mlx_get_data_addr(map->textures[count]->img, \
-	&map->img[count]->bits_per_pixel, &map->img[count]->line_length, \
-	&map->img[count]->endian);
+	if (!map->textures[count])
+		return (free_identifier(input), 0);
+	map->img[count] = ft_calloc (1, sizeof(t_image));
+	if (!map->img[count])
+		return (free_identifier(input), 0);
+	fill_image(map, game, count);
+	return (1);
 }
 
 static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
@@ -48,13 +49,7 @@ static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		map->textures[count] = ft_newsprite("sprites/noah1.xpm");
 	else if (count == 10)
 		map->textures[count] = ft_newsprite("sprites/noah2.xpm");
-	if (!map->textures[count])
-		return (free_identifier(input), 0);
-	map->img[count] = ft_calloc (1, sizeof(t_image));
-	if (!map->img[count])
-		return (free_identifier(input), 0);
-	fill_image(map, input, game, count);
-	return (1);
+	return (fill_struct_two(map, input, game, count));
 }
 
 static void	fill_dir(t_input *input, t_game *game)
