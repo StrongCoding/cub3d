@@ -26,7 +26,7 @@ int	file_check(int count, t_input *input)
 		fd = open(input->so_texture, O_RDONLY);
 	else
 		fd = open("sprites/door.xpm", O_RDONLY);
-	if (!fd)
+	if (fd == -1)
 		return (0);
 	close (fd);
 	return (1);
