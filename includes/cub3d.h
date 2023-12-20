@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 17:17:24 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 20:20:05 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 # define MAP_PLAYER	10
 # define MAP_WALL	10
 
-# define FRAME_ANIMATION_TIME	100
+# define FRAME_ANIMATION_TIME	500
 
 # define ROT_SPEED 0.2
 # define MOVE_SPEED 0.3
@@ -99,5 +99,6 @@ void				toggle(int *var);
 int					view_left(t_game *game);
 int					view_right(t_game *game);
 void				end_program(t_game *game);
+void				change_frame(t_game *game);
 
 #endif
