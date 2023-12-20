@@ -25,6 +25,7 @@ void		find_identifier(t_input *input, char **map, int *line);
 void		get_identifier_two(t_input *input, char **map, int *i, int bool);
 int			fl_colors(t_input *input, char *map);
 int			ce_colors(t_input *input, char *map);
+int			mod_atoi(const char *str);
 char		**get_map(t_input *input, char **file, int line);
 int			check_map(char **file, int row, int col, int *s_bool);
 int			valid_char(char c);

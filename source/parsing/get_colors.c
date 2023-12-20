@@ -34,18 +34,24 @@ int	ce_colors(t_input *input, char *map)
 	tmp = ft_substr(map, 2, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->ce_color[0] = ft_atoi(tmp);
+	input->ce_color[0] = mod_atoi(tmp);
 	free(tmp);
+	if (input->ce_color[0] < 0 || input->ce_color[0] > 255)
+		return (0);
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->ce_color[1] = ft_atoi(tmp);
+	input->ce_color[1] = mod_atoi(tmp);
 	free(tmp);
+	if (input->ce_color[1] < 0 || input->ce_color[1] > 255)
+		return (0);
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->ce_color[2] = ft_atoi(tmp);
+	input->ce_color[2] = mod_atoi(tmp);
 	free(tmp);
+	if (input->ce_color[2] < 0 || input->ce_color[2] > 255)
+		return (0);
 	input->ce = 1;
 	return (1);
 }
@@ -59,18 +65,24 @@ int	fl_colors(t_input *input, char *map)
 	tmp = ft_substr(map, j, pos_num(&map[2], &j));
 	if (!tmp)
 		return (0);
-	input->fl_color[0] = ft_atoi(tmp);
+	input->fl_color[0] = mod_atoi(tmp);
 	free(tmp);
+	if (input->fl_color[0] < 0 || input->fl_color[0] > 255)
+		return (0);
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->fl_color[1] = ft_atoi(tmp);
+	input->fl_color[1] = mod_atoi(tmp);
 	free(tmp);
+	if (input->fl_color[1] < 0 || input->fl_color[1] > 255)
+		return (0);
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->fl_color[2] = ft_atoi(tmp);
+	input->fl_color[2] = mod_atoi(tmp);
 	free(tmp);
+	if (input->fl_color[2] < 0 || input->fl_color[2] > 255)
+		return (0);
 	input->fl = 1;
 	return (1);
 }

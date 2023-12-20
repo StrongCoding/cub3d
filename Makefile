@@ -21,6 +21,7 @@ FILES 		=	main \
                 parsing/map_lengths \
                 parsing/get_identifier \
                 parsing/get_colors \
+                parsing/mod_atoi \
                 parsing/get_map \
                 parsing/map_check \
                 parsing/convert_struct \
