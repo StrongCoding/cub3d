@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:27:14 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 13:43:17 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 20:13:38 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	init_struct(t_game *game)
 		game->win_height = WIN_HEIGHT;
 		game->win_width = WIN_WIDTH;
 		game->time = get_time();
+		game->time_frame = get_time();
 	}
 	else
 		ft_printf("Error\nmlx initialization error!\n");

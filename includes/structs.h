@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:40:22 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/19 15:51:47 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 20:13:23 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_game
 	int					end;
 	t_raycasting		*ray;
 	unsigned long long	time;
+	unsigned long long	time_frame;
 	int					fps;
 	int					print_fps;
 	int					animation;

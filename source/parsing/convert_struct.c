@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:39:27 by nschutz           #+#    #+#             */
-/*   Updated: 2023/12/13 16:10:51 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/19 20:03:38 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	fill_image(t_map *map, t_input *input, t_game *game, int count)
 {
+	printf("fill image map->textures[count]->relative_path: %s\n", map->textures[count]->relative_path);
 	map->textures[count]->img = mlx_xpm_file_to_image(game->mlx, \
 	map->textures[count]->relative_path, &map->textures[count]->width, \
 	&map->textures[count]->height);
@@ -40,6 +41,14 @@ static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 		map->textures[count] = ft_newsprite(input->so_texture);
 	else if (count == 4)
 		map->textures[count] = ft_newsprite("sprites/door.xpm");
+	else if (count == 5)
+		map->textures[count] = ft_newsprite("sprites/baum1.xpm");
+	else if (count == 6)
+		map->textures[count] = ft_newsprite("sprites/baum2.xpm");
+	else if (count == 7)
+		map->textures[count] = ft_newsprite("sprites/baum3.xpm");
+	else if (count == 8)
+		map->textures[count] = ft_newsprite("sprites/baum4.xpm");
 	ft_printf("calloc tex %i\n", count);
 	if (!map->textures[0])
 		return (free_identifier(input), 0);
@@ -80,12 +89,12 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	int	i;
 
 	i = 0;
-	map->textures = ft_calloc(6, sizeof(t_sprite *));
-	map->img = ft_calloc(6, sizeof(t_image *));
+	map->textures = ft_calloc(10, sizeof(t_sprite *));
+	map->img = ft_calloc(10, sizeof(t_image *));
 	ft_printf("calloc double pointer\n");
 	if (!map->textures)
 		return (free_identifier(input), 0);
-	while (i < 5)
+	while (i < 9)
 	{
 		if (!fill_struct(map, input, game, i))
 			return (0);
