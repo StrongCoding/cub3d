@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:09:45 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 17:20:43 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/20 12:45:55 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	set_values(t_map *info, t_game *game, t_image *image1)
 		mlx_mouse_hide(game->mlx, game->win);
 	mlx_mouse_move(game->mlx,
 		game->win, game->win_width / 2, game->win_height / 2);
+	init_image(game, image1);
 }
 
 int	main(int argc, char **argv)
@@ -56,14 +57,10 @@ int	main(int argc, char **argv)
 	if (!file_check(&input))
 		return (free_array(input.map), free_identifier(&input), \
 		ft_printf("Error\nInvalid textures"));
-	init_struct(&game);
-	ft_bzero(&ray, sizeof(t_raycasting));
-	game.ray = &ray;
-	init_win(&game);
+	init_struct(&game, &ray);
 	if (!convert_struct(&input, &info, &game))
 		return (failed_convert(&game, &info), \
 		ft_printf("Error\nInvalid textures"));
-	init_image(&game, &image1);
 	set_values(&info, &game, &image1);
 	if (!(game.error))
 		game_hooks(&game);

@@ -6,13 +6,13 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:27:14 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 20:13:38 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/20 12:44:57 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_struct(t_game *game)
+void	init_struct(t_game *game, t_raycasting *ray)
 {
 	void	*mlx;
 
@@ -25,6 +25,9 @@ void	init_struct(t_game *game)
 		game->win_width = WIN_WIDTH;
 		game->time = get_time();
 		game->time_frame = get_time();
+		ft_bzero(ray, sizeof(t_raycasting));
+		game->ray = ray;
+		init_win(game);
 	}
 	else
 		ft_printf("Error\nmlx initialization error!\n");

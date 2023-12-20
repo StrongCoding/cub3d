@@ -6,7 +6,7 @@
 /*   By: dnebatz <dnebatz@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 18:06:46 by dnebatz           #+#    #+#             */
-/*   Updated: 2023/12/19 20:20:05 by dnebatz          ###   ########.fr       */
+/*   Updated: 2023/12/20 12:43:49 by dnebatz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@
 
 int					key_hook(int keycode, t_game *game);
 int					key_hook_destroy(t_game *game);
-void				init_struct(t_game *game);
+void				init_struct(t_game *game, t_raycasting *ray);
 int					move_right(t_game *game);
 int					move_left(t_game *game);
 int					move_up(t_game *game);
