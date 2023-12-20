@@ -53,6 +53,9 @@ int	main(int argc, char **argv)
 	input = read_map(argv[1]);
 	if (!input.exit)
 		return (ft_printf("Error\nInvalid map"));
+	if (!file_check(&input))
+		return (free_array(input.map), free_identifier(&input), \
+		ft_printf("Error\nInvalid textures"));
 	init_struct(&game);
 	ft_bzero(&ray, sizeof(t_raycasting));
 	game.ray = &ray;

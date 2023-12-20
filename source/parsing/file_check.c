@@ -12,20 +12,23 @@
 
 #include "cub2d.h"
 
-int	file_check(int count, t_input *input)
+int	file_check(t_input *input)
 {
 	int	fd;
 
-	if (count == 0)
-		fd = open(input->we_texture, O_RDONLY);
-	else if (count == 1)
-		fd = open(input->ea_texture, O_RDONLY);
-	else if (count == 2)
-		fd = open(input->no_texture, O_RDONLY);
-	else if (count == 3)
-		fd = open(input->so_texture, O_RDONLY);
-	else
-		fd = open("sprites/door.xpm", O_RDONLY);
+	fd = open(input->we_texture, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	close (fd);
+	fd = open(input->ea_texture, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	close (fd);
+	fd = open(input->no_texture, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	close (fd);
+	fd = open(input->so_texture, O_RDONLY);
 	if (fd == -1)
 		return (0);
 	close (fd);

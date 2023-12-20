@@ -25,8 +25,6 @@ static int	fill_struct_two(t_map *map, t_input *input, t_game *game, int count)
 
 static int	fill_struct(t_map *map, t_input *input, t_game *game, int count)
 {
-	if (!file_check(count, input))
-		return (free_identifier(input), 0);
 	if (count == 0)
 		map->textures[count] = ft_newsprite(input->we_texture);
 	else if (count == 1)
@@ -90,7 +88,7 @@ static int	get_textures(t_map *map, t_input *input, t_game *game)
 	while (i < 11)
 	{
 		if (!fill_struct(map, input, game, i))
-			return (free_image(map, game), 0);
+			return (free_image(map, game, i), 0);
 		i++;
 	}
 	fill_dir(input, game);
