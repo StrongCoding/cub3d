@@ -23,21 +23,10 @@ static int	pos_num(char *s, int *j)
 	return (i);
 }
 
-int	ce_colors(t_input *input, char *map)
+static int	ce_colors_two(t_input *input, char *map, int j)
 {
 	char	*tmp;
-	int		j;
 
-	if (input->ce == 1)
-		return (0);
-	j = 2;
-	tmp = ft_substr(map, 2, pos_num(&map[j], &j));
-	if (!tmp)
-		return (0);
-	input->ce_color[0] = mod_atoi(tmp);
-	free(tmp);
-	if (input->ce_color[0] < 0 || input->ce_color[0] > 255)
-		return (0);
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
@@ -56,19 +45,35 @@ int	ce_colors(t_input *input, char *map)
 	return (1);
 }
 
-int	fl_colors(t_input *input, char *map)
+int	ce_colors(t_input *input, char *map)
 {
 	char	*tmp;
 	int		j;
 
+	if (input->ce == 1)
+		return (0);
+	j = 1;
+	while (++j < (int)ft_strlen(map))
+	{
+		if (!ft_isdigit(map[j]) && map[j] != ',')
+			return (0);
+		j++;
+	}
 	j = 2;
-	tmp = ft_substr(map, j, pos_num(&map[2], &j));
+	tmp = ft_substr(map, 2, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
-	input->fl_color[0] = mod_atoi(tmp);
+	input->ce_color[0] = mod_atoi(tmp);
 	free(tmp);
-	if (input->fl_color[0] < 0 || input->fl_color[0] > 255)
+	if (input->ce_color[0] < 0 || input->ce_color[0] > 255)
 		return (0);
+	return (ce_colors_two(input, map, j));
+}
+
+static int	fl_colors_two(t_input *input, char *map, int j)
+{
+	char	*tmp;
+
 	tmp = ft_substr(&map[j], 0, pos_num(&map[j], &j));
 	if (!tmp)
 		return (0);
@@ -85,4 +90,27 @@ int	fl_colors(t_input *input, char *map)
 		return (0);
 	input->fl = 1;
 	return (1);
+}
+
+int	fl_colors(t_input *input, char *map)
+{
+	char	*tmp;
+	int		j;
+
+	j = 1;
+	while (++j < (int)ft_strlen(map))
+	{
+		if (!ft_isdigit(map[j]) && map[j] != ',' && map[j] != ' ')
+			return (0);
+		j++;
+	}
+	j = 2;
+	tmp = ft_substr(map, j, pos_num(&map[2], &j));
+	if (!tmp)
+		return (0);
+	input->fl_color[0] = mod_atoi(tmp);
+	free(tmp);
+	if (input->fl_color[0] < 0 || input->fl_color[0] > 255)
+		return (0);
+	return (fl_colors_two(input, map, j));
 }
